@@ -1,8 +1,0 @@
-key,label,type,width,filter,sort,search
-单位名称,单位名称,text,200,false,true,true
-岗位/项目,岗位 / 项目,text,240,false,true,true
-类别,类别,tags,110,true,true,true
-批次,批次,tags,90,true,true,true
-报名截止时间,截止时间,date,120,false,true,false
-来源,来源,tags,130,true,true,true
-公告链接,公告,link,80,false,false,false
