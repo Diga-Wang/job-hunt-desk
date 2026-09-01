@@ -1,0 +1,12 @@
+{
+  "title": "国央企秋招信息台",
+  "subtitle": "示例素材库 · 换成你自己的数据即可",
+  "theme": { "name": "mckinsey" },
+  "idFields": ["单位名称", "岗位/项目"],
+  "status": { "enabled": true, "options": ["未开始", "已投递", "面试中", "已放弃"], "default": "未开始" },
+  "kpis": [
+    { "label": "岗位总数", "op": "count" },
+    { "label": "投递中",   "op": "countWhere", "key": "__status", "eq": "已投递" },
+    { "label": "招聘单位", "op": "distinct",  "key": "单位名称" }
+  ]
+}

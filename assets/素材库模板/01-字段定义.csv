@@ -1,0 +1,5 @@
+﻿key,label,type,width,filter,sort,search
+名称,名称,text,220,true,true,true
+分类,分类,tags,130,true,true,true
+截止,截止,date,110,false,true,false
+链接,链接,link,80,false,false,false
