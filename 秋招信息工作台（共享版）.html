@@ -137,6 +137,13 @@ select.sel:focus,input.inp:focus{border-color:var(--sidebar-2);box-shadow:0 0 0 
 .btn-danger:hover{background:#FDF3F1;border-color:#E6BFB9}
 
 .table-wrap{overflow-x:auto;border-radius:var(--radius)}
+/* 顶部横向同步滚动条：宽表格不用拉到页面底部就能左右滑 */
+.top-scroll{overflow-x:auto;overflow-y:hidden;height:11px;margin-bottom:3px;border-radius:6px}
+.top-scroll::-webkit-scrollbar{height:11px}
+.top-scroll::-webkit-scrollbar-thumb{background:rgba(122,134,154,.5);border-radius:6px}
+.top-scroll::-webkit-scrollbar-thumb:hover{background:rgba(122,134,154,.75)}
+.top-scroll::-webkit-scrollbar-track{background:rgba(122,134,154,.12);border-radius:6px}
+.top-scroll .top-scroll-inner{height:1px}
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:820px}
 thead th{text-align:left;padding:11px 12px;background:var(--surface-2);color:var(--ink-2);font-weight:600;font-size:12px;border-bottom:1px solid var(--line);white-space:nowrap}
 thead th.sortable{cursor:pointer;user-select:none}
@@ -152,6 +159,35 @@ tbody tr:last-child td{border-bottom:none}
 .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;background:var(--gray-soft);color:var(--ink-2);white-space:nowrap}
 .tag-batch{background:var(--purple-soft);color:#3A5BA0}
 .tag-cat{background:var(--sidebar);color:var(--sidebar-ink)}
+/* 专业匹配徽标 */
+.mj-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.mj-match{background:#E6F6EC;color:#1E8E4E;border:1px solid #BFE6CC}
+.mj-no{background:#FDECEC;color:#C0392B;border:1px solid #F3C4C4}
+.mj-un{background:#EEF1F5;color:#7A8190;border:1px solid #DCE1E8}
+.mj-req{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.35;max-width:200px;white-space:normal}
+.salary{font-weight:700;color:var(--coral-deep);font-size:12.5px}
+.score-badge{display:inline-flex;align-items:center;gap:3px;margin-top:4px;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.sc-high{background:var(--green-soft);color:#227C52}
+.sc-mid{background:var(--amber-soft);color:#B87A16}
+.sc-low{background:var(--gray-soft);color:#6C6679}
+.sc-weak{background:#F4ECEF;color:#B0547A}
+.sc-fail{background:#FBE9E9;color:#C0392B;border:1px solid #E7B4B0;font-weight:700}
+.sc-ok{background:var(--green-soft);color:#227C52}
+.score-sub{display:inline-block;margin-top:4px;margin-left:6px;font-size:10.5px;color:var(--muted)}
+.hint.ok{color:#227C52}
+.hint.fail{color:#C0392B;font-weight:600}
+.chk-inline{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);cursor:pointer;user-select:none;margin-left:10px}
+.chk-inline input{width:16px;height:16px;accent-color:var(--blue);cursor:pointer}
+.img-upload{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.img-thumb{display:inline-flex;max-width:120px}
+.img-thumb img{width:96px;height:auto;border-radius:10px;border:1px solid var(--gray-soft);display:block}
+.btn-cam{display:inline-flex;align-items:center;justify-content:center;padding:6px 8px;color:var(--blue);background:var(--blue-soft)}
+.btn-cam:hover{background:#E2ECFB}
+.img-lb{display:none;align-items:center;justify-content:center;padding:24px;background:rgba(40,34,52,.72)}
+.img-lb.on{display:flex}
+.img-lb-box{position:relative;max-width:92vw;max-height:88vh}
+.img-lb-box img{max-width:92vw;max-height:88vh;border-radius:12px;display:block;background:#fff}
+.img-lb-box .x{position:absolute;top:-14px;right:-14px;width:34px;height:34px;border-radius:50%;border:none;background:#fff;color:#3a3346;font-size:20px;line-height:1;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25)}
 .date-empty{color:var(--muted);font-style:italic;font-size:12px}
 .dl{font-variant-numeric:tabular-nums;font-weight:600}
 .dl small{font-weight:400;color:var(--muted);font-size:11px;margin-left:5px}
@@ -403,7 +439,24 @@ details.schema[open] summary::before{transform:rotate(90deg)}
   .modal-foot .btn{width:100%;justify-content:center}
   .jd-count{gap:6px}
   .jd-c{padding:7px 11px}
+  .cmp-table{min-width:640px}
+  .cmp-table thead{display:table-header-group}
+  .cmp-table tbody tr{display:table-row;border:none;padding:0;margin:0;background:transparent}
+  .cmp-table tbody td{display:table-cell;border:1px solid var(--line);padding:9px 11px;text-align:left}
+  .cmp-table tbody td::before{display:none}
 }
+/* ---- JD 多岗位对比 ---- */
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px}
+.seg-btn{border:0;background:transparent;color:var(--muted);font-size:13px;padding:7px 14px;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:600}
+.seg-btn.on{background:#fff;color:var(--sidebar-ink);box-shadow:0 1px 3px rgba(75,66,102,.12)}
+.cmp-pre{white-space:pre-wrap;word-break:break-word;font-size:12.5px;line-height:1.7;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin:8px 0 0;max-height:340px;overflow:auto}
+.cmp-edit{width:100%;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:12.5px;font-family:inherit;background:var(--surface);outline:none;resize:vertical;box-sizing:border-box}
+.cmp-edit:focus{border-color:var(--sidebar-2);box-shadow:0 0 0 3px rgba(122,107,216,.1)}
+.cmp-hd{font-weight:600;font-size:13px;color:var(--sidebar-ink)}
+.cmp-fld{background:var(--surface-2);white-space:nowrap}
+.cmp-table{min-width:680px;border-collapse:collapse}
+.cmp-table th,.cmp-table td{border:1px solid var(--line);padding:9px 11px;vertical-align:top;text-align:left;font-size:12.5px}
+.cmp-table thead th{background:var(--surface-2)}
 </style>
 </head>
 <body data-page-node-id="OZizJlovCyorjCxDVN8Q2Z">
@@ -439,6 +492,10 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       <button class="nav-item" data-page="iv" data-page-node-id="2iSoLxt1gIIDBuyx7yBI8N">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="dx03ICJGg188qhZjdeTu5M"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" data-page-node-id="SYF3ZF2Fl943IQ9ND41Vrj"/></svg>
         <span data-page-node-id="KJFN69tRDCBdb30tUl060X">面试</span><span class="nav-badge" id="badgeIv" data-page-node-id="WVQ6Uxi97DpBDMkIENZ4SZ">0</span>
+      </button>
+      <button class="nav-item" data-page="jdcmp" data-page-node-id="jdCmpNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="jdCmpNavIco"><rect x="3" y="4" width="7" height="16" rx="1.5" data-page-node-id="jdCmpNavIco1"/><rect x="14" y="4" width="7" height="16" rx="1.5" data-page-node-id="jdCmpNavIco2"/></svg>
+        <span data-page-node-id="jdCmpNavTxt">JD 对比</span>
       </button>
     </nav>
 
@@ -537,10 +594,20 @@ details.schema[open] summary::before{transform:rotate(90deg)}
         <select class="sel" id="fBatch" data-page-node-id="an1bMBWx2VmJxtKttrNSHx"><option value="" data-page-node-id="LW9ujmxEUZ2iGcZ9KGKDsm">全部批次</option></select>
         <select class="sel" id="fTime" data-page-node-id="WkpZ4OrvAXZfamsDQ9BVnN">
           <option value="" data-page-node-id="sIoydWVAA38fM1EH1W5RRA">全部时间</option><option value="open" data-page-node-id="7UM5FsS4UiGSzBHQN30Nr1">报名中</option>
-          <option value="soon" data-page-node-id="8cXVl6QaB9C5exDDO3hu5D">14 天内截止</option><option value="closed" data-page-node-id="FEGCB7hc8rty1uAFGWUw73">已截止</option><option value="tbd" data-page-node-id="RPiW17MNxJZbDgEyos8dGe">截止未公布</option>
+          <option value="soon" data-page-node-id="8cXVl6QaB9C5exDDO3hu5D">14 天内截止</option><option value="closed" data-page-node-id="FEGCB7hc8rty1uAFGWUw73">已截止</option>          <option value="tbd" data-page-node-id="RPiW17MNxJZbDgEyos8dGe">截止未公布</option>
         </select>
+        <select class="sel" id="fMajor" data-page-node-id="fMajorNode">
+          <option value="" data-page-node-id="fMajorAll">全部专业匹配</option>
+          <option value="匹配" data-page-node-id="fMajorOk">匹配我的专业</option>
+          <option value="不符" data-page-node-id="fMajorNo">专业不符（明显不对口）</option>
+          <option value="未标明" data-page-node-id="fMajorUn">未标明专业</option>
+        </select>
+        <label class="chk-inline" data-page-node-id="fScoreWrap"><input type="checkbox" id="fScore" data-page-node-id="fScoreChk"> 只看匹配度≥60%</label>
+        <label class="chk-inline"><input type="checkbox" id="fHideExpired"> 隐藏已截止</label>
+        <label class="chk-inline" title="按「我的资质」逐条核对岗位的硬性要求（学历/专业/届别/年龄/证书/政治面貌），任一条不满足即隐藏"><input type="checkbox" id="fHideFail"> 隐藏硬性不符</label>
         <button class="btn btn-primary" id="btnAdd" data-page-node-id="qIE8EpW3X24FxrC2qDCYNr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" data-page-node-id="Ar6Sc6lMWcyqheVt5Elc2x"><path d="M12 5v14" data-page-node-id="wh3DjC7Z7Q5X27dhXjEwCg"/><path d="M5 12h14" data-page-node-id="LsK5ZxQ07ceFlrTPHjSHxy"/></svg>新增岗位</button>
         <button class="btn" id="btnExport" data-page-node-id="4EI1ecNNv3VWpqBvhEATkK">导出 jobs.json</button>
+        <button class="btn" id="btnProfile" data-page-node-id="btnProfileNode">我的资质</button>
       </div>
       <div class="card" data-page-node-id="QdkHaiqTEgXFpvbSGVouFN">
         <div class="table-wrap" data-page-node-id="qphQuOTYfzPz3rEdbs5HBW">
@@ -549,7 +616,11 @@ details.schema[open] summary::before{transform:rotate(90deg)}
               <th style="min-width:180px" data-page-node-id="I10vi18PVbrb2X0i8Lrt2C">单位名称</th><th style="min-width:170px" data-page-node-id="IeVGkemESZvrGXqmOWeCkd">岗位 / 项目</th><th data-page-node-id="YaF7ozry9rc31lfdQHDtgI">类别</th><th data-page-node-id="psWThv9qcMWQeNqjsdcfcC">批次</th>
               <th class="sortable" data-sort="deadline" data-page-node-id="0FTgrNaitAZ3QWuA2DSp2O">报名截止时间 <span class="arw" data-page-node-id="SS11Gm3qWe8n00ui827riu">▼</span></th>
               <th class="sortable" data-sort="publishDate" data-page-node-id="GN8AR6F1PyHtVS3brUjgnT">发布时间 <span class="arw" data-page-node-id="cw45IwGtoHFkiRI06F0p5C">▼</span></th>
-              <th data-page-node-id="gTjFHMaBMLlw9ygLALhnYO">来源</th><th data-page-node-id="kixXOIoPhzSh5KYD1Q84M0">公告</th><th style="text-align:right" data-page-node-id="msDw32IpQ8HuRvpatRBSxC">操作</th>
+              <th data-page-node-id="gTjFHMaBMLlw9ygLALhnYO">来源</th>
+              <th data-page-node-id="salCol">薪资</th>
+              <th data-page-node-id="majCol">专业要求</th>
+              <th data-page-node-id="eduCol">学历</th>
+              <th data-page-node-id="kixXOIoPhzSh5KYD1Q84M0">公告</th><th style="text-align:right" data-page-node-id="msDw32IpQ8HuRvpatRBSxC">操作</th>
             </tr></thead>
             <tbody id="poolBody" data-page-node-id="BM1FLa6uqb5nU6TJPp83Od"></tbody>
           </table>
@@ -787,13 +858,66 @@ details.schema[open] summary::before{transform:rotate(90deg)}
         </div>
       </div>
     </section>
+
+    <!-- ============ JD 多岗位对比 ============ -->
+    <section class="page" id="page-jdcmp" data-page-node-id="jdCmpSec">
+      <div class="page-head" data-page-node-id="jdCmpHead">
+        <h2 data-page-node-id="jdCmpH2">JD 多岗位对比</h2>
+        <div class="sub" data-page-node-id="jdCmpSub">粘贴 <b>多条完整 JD</b>（岗位之间用单独一行的 <code>====</code> / <code>---</code> / <code>***</code> 分隔）→ 自动抽取单位 / 岗位 / 城市 / 薪资 / 截止 / 核心要求 → 左右并排对比，可切换看原文。<b>不评分、不生成文案</b>，判断权在你。</div>
+        <div class="rule" data-page-node-id="jdCmpRule"></div>
+      </div>
+
+      <div class="card card-pad" data-page-node-id="jdCmpPaste">
+        <div class="card-title" data-page-node-id="jdCmpCT">粘贴 JD（多条用分隔线隔开）</div>
+        <div class="card-desc" data-page-node-id="jdCmpCD">分隔线：单独一行输入 <code>====</code>、<code>---</code> 或 <code>***</code>。没有分隔线则整段视为一条 JD。抽错 / 漏抽的字段可在下方单元格直接改，自动存本地。</div>
+        <textarea class="jd-ta" id="cmpRaw" placeholder="【示例公司A】品牌传播专员-深圳&#10;工作地点：深圳&#10;薪资：15-25K·15薪&#10;岗位职责：…&#10;任职要求：…&#10;&#10;====&#10;&#10;【示例公司B】AI 内容运营-北京&#10;…"></textarea>
+        <div class="toolbar" style="margin:12px 0 0" data-page-node-id="jdCmpTB">
+          <button class="btn btn-primary" id="btnCmpParse" data-page-node-id="jdCmpParse">拆解并对比</button>
+          <button class="btn btn-sm" id="btnCmpClear" data-page-node-id="jdCmpClear">清空对比</button>
+          <button class="btn btn-sm" id="btnCmpExport" data-page-node-id="jdCmpExport">导出对比 Markdown</button>
+        </div>
+      </div>
+
+      <div class="warn-note" data-page-node-id="jdCmpWarn">字段为<b>正则启发式抽取</b>，可能漏抽或错抽（尤其「单位」JD 通常不含）。直接改单元格即可，改动实时保存到本地。</div>
+
+      <div class="toolbar" style="margin:14px 0 8px" data-page-node-id="jdCmpViewBar">
+        <div class="seg" id="cmpViewSeg" data-page-node-id="jdCmpSeg">
+          <button class="seg-btn on" data-view="compare" data-page-node-id="jdCmpV1">并排对比</button>
+          <button class="seg-btn" data-view="raw" data-page-node-id="jdCmpV2">看原文</button>
+        </div>
+        <span style="font-size:12px;color:var(--muted)" id="cmpCount" data-page-node-id="jdCmpCount"></span>
+      </div>
+
+      <div class="card card-pad" id="cmpResult" style="display:none" data-page-node-id="jdCmpRes"></div>
+      <div class="empty" id="cmpEmpty" data-page-node-id="jdCmpEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="jdCmpEmptyIco"><rect x="3" y="4" width="18" height="16" rx="2" data-page-node-id="jdCmpEmptyIco1"/><path d="M3 9h18M9 4v16" data-page-node-id="jdCmpEmptyIco2"/></svg>
+        还没有对比内容。粘贴 JD 后点「拆解并对比」。
+      </div>
+    </section>
   </main>
+</div>
+
+<div class="mask" id="maskResume" data-page-node-id="maskResumeNode">
+  <div class="modal" style="max-width:640px" data-page-node-id="resumeModalNode">
+    <div class="modal-head"><h3 id="resumeDraftTitle">简历初稿</h3><button class="x" onclick="closeResumeDraft()">&times;</button></div>
+    <div class="modal-body">
+      <div class="hint" style="margin-bottom:8px">这是按 JD 关键词自动挑选组装的初稿，不是可以直接投的成品——请核实每条数据、精简语言、按自己的判断取舍。</div>
+      <textarea id="resumeDraftBody" style="min-height:360px;width:100%;font-family:inherit;font-size:13px;line-height:1.6" readonly></textarea>
+    </div>
+    <div class="modal-foot"><button class="btn" onclick="closeResumeDraft()">关闭</button><button class="btn btn-primary" onclick="copyResumeDraft()">复制全文</button></div>
+  </div>
 </div>
 
 <div class="mask" id="mask" data-page-node-id="Js2ffzJekp2fXB9bbasSvb">
   <div class="modal" data-page-node-id="pmHLsj6giP17Kw7uPLhDgW">
     <div class="modal-head" data-page-node-id="dl0OkRh9HigBysdKGoFFKt"><h3 id="mTitle" data-page-node-id="iV5Conm6RtCIN56oQcgy96">新增岗位</h3><button class="x" id="mClose" data-page-node-id="h5ObjzvC4V8FSpMmyX5CGH">&times;</button></div>
     <div class="modal-body" data-page-node-id="CeMx0zXIRtE5i62HN5Rz2r">
+      <div class="card" style="padding:12px;margin-bottom:14px;background:var(--surface-2)" data-page-node-id="jdAutofillWrap">
+        <div class="card-title" style="font-size:13px">粘贴 JD 原文，自动填这张表 <span class="opt">选填，不粘贴就手动逐项填</span></div>
+        <textarea id="f_autofill" style="min-height:88px;margin-top:6px" placeholder="把招聘公告整段粘贴进来（单位/岗位/城市/薪资/截止/职责/要求），点下面「自动识别」会尽量填好左边的字段，识别不准的地方自己改就行"></textarea>
+        <button type="button" class="btn btn-sm" style="margin-top:8px" id="btnAutofillJob">自动识别并填表</button>
+        <div class="hint" id="autofillHint" style="margin-top:6px"></div>
+      </div>
       <div class="fgrid" data-page-node-id="hXGEGU73qwF7PqqrXzyBlr">
         <div class="f" data-page-node-id="a4zpyAKLOArJQgvYBOAzsL"><label data-page-node-id="rupz7t2PMsTGbP8Ek3RUr1">单位名称 *</label><input id="f_org" type="text" placeholder="如：某某科技有限公司" data-page-node-id="FFwDacmChqCMrDHbbCCLsu"></div>
         <div class="f" data-page-node-id="p8teWCZSoxcjU1X1CTg0jR"><label data-page-node-id="qiGwZoNDBINeZHA5l51zlv">岗位 / 项目 *</label><input id="f_position" type="text" placeholder="如：AI 内容运营" data-page-node-id="idmmFr6Ddhi9E6nm97UFRi"></div>
@@ -803,10 +927,68 @@ details.schema[open] summary::before{transform:rotate(90deg)}
         <div class="f" data-page-node-id="dTSCFuVRDXG8r3bOamNMSM"><label data-page-node-id="Y4zWF9RVS0tBS56YRgi7Lj">发布时间 <span class="opt" data-page-node-id="g14bh60uV3C5FaHXrw0LFJ">选填</span></label><input id="f_publishDate" type="date" data-page-node-id="QKLLMX2ekZFDAlU8EyclqQ"></div>
         <div class="f" data-page-node-id="826kDhWl7jCtiY818PfE0Q"><label data-page-node-id="bkwkbsSofWEW7e4GjY9tN3">来源 <span class="opt" data-page-node-id="SIoOCr8BrNs3WEln97W7Wk">选填</span></label><input id="f_source" type="text" placeholder="猎聘 / BOSS直聘 / 官网…" data-page-node-id="eivOnXkzyRcbqla9Lgxr9y"></div>
         <div class="f" data-page-node-id="BRVSHOVuRPDQ2Ykxbza0lP"><label data-page-node-id="DytJBh6y0wS4NHyEV8cg1m">公告链接 <span class="opt" data-page-node-id="6AksRnmcWM36UcYZQGhCjv">选填</span></label><input id="f_link" type="url" placeholder="https://…" data-page-node-id="UAeVtDEwBSSZclhzykQfAr"></div>
+        <div class="f full" data-page-node-id="reqWrap"><label>硬性专业/学历要求 <span class="opt">选填 · 从公告抄过来，如：电力专业 / 电气工程 / 985硕士</span></label><input id="f_req" type="text" placeholder="留空=不判定；填了你没有的会标红「硬性不符」" data-page-node-id="fReq"><div class="hint" id="reqHint"></div></div>
+        <div class="f full" data-page-node-id="imgUpWrap"><label>职位截图 <span class="opt">选填 · 最多 1 张</span></label>
+          <div class="img-upload">
+            <input type="file" id="f_img" accept="image/*" style="display:none">
+            <button type="button" class="btn btn-sm" id="btnPickImg">上传截图</button>
+            <div class="img-thumb" id="imgThumb"></div>
+            <button type="button" class="btn btn-sm btn-danger" id="btnRmImg" style="display:none">移除</button>
+            <div class="hint">上传后本机会压缩到 800px 宽并存为本地数据，不上传任何服务器。用于保存你自己刷到的职位截图。</div>
+          </div>
+        </div>
         <div class="f full" data-page-node-id="GkRDz7Q66eiIk07RcrWjJt"><label data-page-node-id="xD7YZR3nqFiv8xNZJDvXWj">备注 <span class="opt" data-page-node-id="BCYpFgt5TioTLu5pL7XKiN">选填</span></label><textarea id="f_note" placeholder="岗位要求、内推人、待办…"></textarea></div>
       </div>
     </div>
     <div class="modal-foot" data-page-node-id="YKXItZtM97Nq9fs5SYn6SN"><button class="btn" id="mCancel" data-page-node-id="Bnk9uqBf5bR8SU79579RU0">取消</button><button class="btn btn-primary" id="mSave" data-page-node-id="BbF41uOWF3Ur7DMXmJaLBZ">保存</button></div>
+  </div>
+</div>
+
+<div class="mask" id="maskProfile" data-page-node-id="maskProfileNode">
+  <div class="modal" style="max-width:640px" data-page-node-id="profileModalNode">
+    <div class="modal-head" data-page-node-id="pHdr"><h3 data-page-node-id="pTitle">我的资质档案 · 硬性要求判定基准</h3><button class="x" id="pClose" data-page-node-id="pCloseNode">&times;</button></div>
+    <div class="modal-body" data-page-node-id="pBody">
+      <div class="fgrid" data-page-node-id="pGrid">
+        <div class="f full" data-page-node-id="pMajorsWrap">
+          <label data-page-node-id="pMajorsLbl">专业 / 方向 <span class="opt">逗号或换行分隔</span></label>
+          <textarea id="p_majors" style="min-height:64px" placeholder="建筑学, 城市设计, 城市规划, 景观, 工商管理, MBA"></textarea>
+          <div class="hint">岗位要求的专业会先归到粗类别再比对，所以「工商管理」能匹配「管理类相关专业」，但匹配不上「电气工程」。</div>
+        </div>
+        <div class="f" data-page-node-id="pDegWrap"><label>最高学历</label>
+          <select id="p_degree">
+            <option value="博士后">博士后</option><option value="博士">博士</option>
+            <option value="硕士">硕士 / 研究生</option><option value="本科">本科 / 学士</option>
+            <option value="大专">大专</option><option value="中专">中专</option>
+          </select>
+          <div class="hint">「硕士及以上」按此档判断；要求「博士」的岗位会判不符。</div>
+        </div>
+        <div class="f" data-page-node-id="pCampusWrap"><label>届别</label>
+          <select id="p_campus">
+            <option value="2026届">2026届</option><option value="2027届">2027届</option>
+            <option value="2028届">2028届</option><option value="非应届">非应届 / 社招</option>
+          </select>
+        </div>
+        <div class="f" data-page-node-id="pBirthWrap"><label>出生年份</label>
+          <input id="p_birth" type="number" min="1960" max="2010" placeholder="1996">
+          <div class="hint">用于「年龄不超过 X 周岁」这类硬门槛。</div>
+        </div>
+        <div class="f" data-page-node-id="pWorkWrap"><label>工作年限</label>
+          <input id="p_work" type="number" min="0" max="45" placeholder="4">
+          <div class="hint">用于「X 年以上工作经验」。</div>
+        </div>
+        <div class="f" data-page-node-id="pPolWrap"><label>政治面貌</label>
+          <select id="p_politics">
+            <option value="">非党员 / 群众</option><option value="中共党员">中共党员</option>
+            <option value="预备党员">预备党员</option><option value="共青团员">共青团员</option>
+          </select>
+        </div>
+        <div class="f full" data-page-node-id="pCertWrap"><label>证书 / 语言成绩 <span class="opt">逗号分隔</span></label>
+          <input id="p_certs" type="text" placeholder="CET-6, 雅思, 计算机二级">
+        </div>
+        <div class="f full" data-page-node-id="pSumWrap"><div class="hint" id="pSummary"></div></div>
+      </div>
+    </div>
+    <div class="modal-foot" data-page-node-id="pFoot"><button class="btn" id="pCancel" data-page-node-id="pCancelNode">取消</button><button class="btn btn-primary" id="pSave" data-page-node-id="pSaveNode">保存并重算</button></div>
   </div>
 </div>
 
@@ -833,10 +1015,15 @@ details.schema[open] summary::before{transform:rotate(90deg)}
 
 <input type="file" id="fileInput" accept=".json,application/json" style="display:none" data-page-node-id="r5ABvAPo8gpfGXp1BpE0gy">
 <input type="file" id="fileInputBak" accept=".json,application/json" style="display:none" data-page-node-id="mQCkvvGXrIBysUqcTYH2lY">
+
+<div class="mask img-lb" id="imgLightbox"><div class="img-lb-box">
+  <img id="imgLightboxImg" alt="职位截图">
+  <button class="x" id="imgLightboxX" type="button">&times;</button>
+</div></div>
 <div id="toast" data-page-node-id="VCZI3BrzTMsNoSiDudi4Er"></div>
 
 <script id="embeddedJobs">window.EMBEDDED_JOBS = {
-  "updatedAt": "示例数据（可替换为自己的 jobs.json）2026-09-01",
+  "updatedAt": "示例数据（可替换为自己的 jobs.json）2026-09-17",
   "_字段说明": {
     "updatedAt": "数据更新时间，字符串，例如 2026-08-31 16:30。留空不影响读取。",
     "jobs": "岗位数组，每个对象一条岗位记录。",
@@ -847,7 +1034,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
     "jobs[].报名截止时间": "YYYY-MM-DD。未公布一律留空字符串，禁止编造。",
     "jobs[].来源": "文本，如 猎聘 / BOSS直聘 / 公司官网 / 公众号。",
     "jobs[].发布时间": "YYYY-MM-DD，可留空。",
-    "jobs[].公告链接": "完整 URL，可留空。"
+    "jobs[].公告链接": "完整 URL，可留空。",
+    "jobs[].薪资": "文本，如 12-18K·14薪 / 面议。留空则岗位池不显示薪资标签。",
+    "jobs[].专业要求": "文本，逗号分隔可写多个专业。留空则视为「未标明」，不参与硬性匹配判定。",
+    "jobs[].学历要求": "文本，如 本科及以上 / 硕士及以上。用于「我的资质」硬性要求核对。",
+    "jobs[].经验要求": "文本，如 应届生 / 1-3年 / 3年以上。",
+    "jobs[].招聘人数": "文本或数字，可留空。",
+    "jobs[].部门": "文本，可留空。",
+    "jobs[].专业匹配": "枚举：匹配 / 不符 / 未标明。可由你手工判定，也可留空由页面按「我的资质」自动计算。",
+    "jobs[].投递状态": "枚举：未投递 / 已投递 / 笔试中 / 面试中 / offer / 已拒绝。留空视为未投递；页面里手动改状态后，不会再被这个字段覆盖。",
+    "jobs[].投递日期": "YYYY-MM-DD，配合「投递状态」使用，可留空。"
   },
   "jobs": [
     {
@@ -863,7 +1059,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
       "_updated": "2026-09-01",
-      "备注": "JD 强调项目统筹与看板管理"
+      "备注": "JD 强调项目统筹与看板管理",
+      "薪资": "12-18K·14薪",
+      "专业要求": "市场营销、新闻传播、工商管理相关专业优先",
+      "学历要求": "本科及以上",
+      "经验要求": "应届生",
+      "招聘人数": "3",
+      "部门": "用户增长部",
+      "投递状态": "已投递",
+      "投递日期": "2026-09-05",
+      "专业匹配": "匹配"
     },
     {
       "id": "j02",
@@ -878,7 +1083,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
       "_updated": "2026-09-01",
-      "备注": "需要 SOP 搭建与流程标准化"
+      "备注": "需要 SOP 搭建与流程标准化",
+      "薪资": "面议（国企口径，参照当地事业单位标准）",
+      "专业要求": "不限专业",
+      "学历要求": "本科及以上",
+      "经验要求": "应届生",
+      "招聘人数": "5",
+      "部门": "数字化转型办公室",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "未标明"
     },
     {
       "id": "j03",
@@ -892,7 +1106,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j03",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "8-12K·13薪",
+      "专业要求": "城乡规划、地理信息科学、土木工程相关专业",
+      "学历要求": "硕士及以上",
+      "经验要求": "应届生",
+      "招聘人数": "2",
+      "部门": "智慧城市研究中心",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "不符"
     },
     {
       "id": "j04",
@@ -907,7 +1130,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
       "_updated": "2026-09-01",
-      "备注": "负责报表自动化与数据汇总"
+      "备注": "负责报表自动化与数据汇总",
+      "薪资": "15-22K·12薪",
+      "专业要求": "统计学、数据科学、计算机相关专业",
+      "学历要求": "本科及以上",
+      "经验要求": "1年以下",
+      "招聘人数": "1",
+      "部门": "Data & Analytics",
+      "投递状态": "笔试中",
+      "投递日期": "2026-08-28",
+      "专业匹配": "匹配"
     },
     {
       "id": "j05",
@@ -921,7 +1153,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j05",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "7-10K",
+      "专业要求": "不限专业",
+      "学历要求": "大专及以上",
+      "经验要求": "应届生",
+      "招聘人数": "4",
+      "部门": "教研运营部",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "未标明"
     },
     {
       "id": "j06",
@@ -935,7 +1176,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j06",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "面议",
+      "专业要求": "经济学、产业经济相关专业优先",
+      "学历要求": "硕士及以上",
+      "经验要求": "应届生",
+      "招聘人数": "2",
+      "部门": "行业研究部",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "不符"
     },
     {
       "id": "j07",
@@ -949,7 +1199,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j07",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "10-15K·15薪",
+      "专业要求": "金融学、财务管理、投资学相关专业",
+      "学历要求": "硕士及以上",
+      "经验要求": "应届生",
+      "招聘人数": "2",
+      "部门": "投资管理部",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "匹配"
     },
     {
       "id": "j08",
@@ -964,7 +1223,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
       "_updated": "2026-09-01",
-      "备注": "需跨部门协作推进需求"
+      "备注": "需跨部门协作推进需求",
+      "薪资": "14-20K",
+      "专业要求": "产品设计、生物医学工程、计算机相关专业优先",
+      "学历要求": "本科及以上",
+      "经验要求": "1-3年",
+      "招聘人数": "1",
+      "部门": "产品部",
+      "投递状态": "面试中",
+      "投递日期": "2026-08-20",
+      "专业匹配": "未标明"
     },
     {
       "id": "j09",
@@ -978,7 +1246,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j09",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "面议（央企口径）",
+      "专业要求": "不限专业",
+      "学历要求": "本科及以上",
+      "经验要求": "应届生",
+      "招聘人数": "20",
+      "部门": "人力资源部（培训生项目）",
+      "投递状态": "已投递",
+      "投递日期": "2026-09-02",
+      "专业匹配": "未标明"
     },
     {
       "id": "j10",
@@ -992,7 +1269,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j10",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "",
+      "专业要求": "",
+      "学历要求": "",
+      "经验要求": "",
+      "招聘人数": "",
+      "部门": "",
+      "投递状态": "",
+      "投递日期": "",
+      "专业匹配": "未标明"
     },
     {
       "id": "j11",
@@ -1006,7 +1292,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j11",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "25-40K·16薪",
+      "专业要求": "运营、市场相关专业，3年以上互联网运营经验",
+      "学历要求": "本科及以上",
+      "经验要求": "3年以上",
+      "招聘人数": "1",
+      "部门": "用户增长部",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "不符"
     },
     {
       "id": "j12",
@@ -1021,7 +1316,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
       "_updated": "2026-09-01",
-      "备注": "使用脚本实现自动化统计"
+      "备注": "使用脚本实现自动化统计",
+      "薪资": "300-400元/天",
+      "专业要求": "统计学、数据科学相关专业",
+      "学历要求": "本科及以上（在读）",
+      "经验要求": "应届生",
+      "招聘人数": "2",
+      "部门": "Data & Analytics",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "匹配"
     },
     {
       "id": "j13",
@@ -1035,7 +1339,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j13",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "4-6K（实习）",
+      "专业要求": "不限专业",
+      "学历要求": "大专及以上（在读）",
+      "经验要求": "应届生",
+      "招聘人数": "3",
+      "部门": "内容运营部",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "未标明"
     },
     {
       "id": "j14",
@@ -1049,157 +1362,22 @@ details.schema[open] summary::before{transform:rotate(90deg)}
       "公告链接": "https://example.com/job/j14",
       "_src": "示例数据",
       "_first_seen": "2026-09-01",
-      "_updated": "2026-09-01"
+      "_updated": "2026-09-01",
+      "薪资": "9-13K·13薪",
+      "专业要求": "计算机科学、软件工程、信息管理相关专业",
+      "学历要求": "本科及以上",
+      "经验要求": "应届生",
+      "招聘人数": "3",
+      "部门": "数据治理中心",
+      "投递状态": "未投递",
+      "投递日期": "",
+      "专业匹配": "匹配"
     }
   ]
 };</script>
-<script id="embeddedExp">window.EMBEDDED_EXP = {
-  "updatedAt": "2026-09-01",
-  "_来源": "示例数据，仅用于演示工作台结构，请替换为自己的经历库。",
-  "_字段说明": {
-    "items[].标题": "经历条目名称，会显示在 JD 对照与面试准备里。",
-    "items[].组织": "公司 / 单位",
-    "items[].时期": "起止时间",
-    "items[].方向标签": "方向，如 设计 / 运营 / 工程",
-    "items[].背景": "背景（一句话）",
-    "items[].动作": "你做了什么",
-    "items[].结果": "产出",
-    "items[].量化": "可量化的数字",
-    "items[].待补": "还没说清、面试易被追问的点",
-    "items[].关键词": "用于和 JD 关键词命中的词"
-  },
-  "items": [
-    {
-      "id": "e1",
-      "标题": "校园招聘项目统筹",
-      "组织": "示例单位 A",
-      "时期": "2024",
-      "方向标签": "运营",
-      "背景": "秋招项目分散、信息散落",
-      "动作": "搭建统一信息看板并制定跟进 SOP",
-      "结果": "进度可视、逾期可控",
-      "量化": "覆盖 200+ 岗位",
-      "待补": "SOP 具体步骤",
-      "关键词": [
-        "统筹",
-        "SOP",
-        "看板"
-      ]
-    },
-    {
-      "id": "e2",
-      "标题": "跨部门需求落地",
-      "组织": "示例单位 B",
-      "时期": "2023",
-      "方向标签": "产品",
-      "背景": "需求反复变动",
-      "动作": "建立需求分级与评审机制",
-      "结果": "返工下降",
-      "量化": "评审周期 -30%",
-      "待补": "分级标准",
-      "关键词": [
-        "需求",
-        "评审",
-        "协作"
-      ]
-    },
-    {
-      "id": "e3",
-      "标题": "数据看板搭建",
-      "组织": "示例单位 C",
-      "时期": "2023",
-      "方向标签": "工程",
-      "背景": "人工统计耗时",
-      "动作": "用脚本自动化汇总",
-      "结果": "每周节省工时",
-      "量化": "节省 8h/周",
-      "待补": "脚本可维护性",
-      "关键词": [
-        "自动化",
-        "数据",
-        "脚本"
-      ]
-    }
-  ],
-  "教育背景": [
-    {
-      "学校": "示例大学",
-      "学位": "硕士",
-      "形式": "全日制",
-      "时期": "2024-2026",
-      "毕设": "示例课题"
-    },
-    {
-      "学校": "示例大学",
-      "学位": "学士",
-      "形式": "全日制",
-      "时期": "2019-2024",
-      "毕设": ""
-    }
-  ],
-  "工具技能": [
-    {
-      "类别": "办公",
-      "工具": [
-        "Excel",
-        "PPT",
-        "飞书"
-      ],
-      "备注": "熟练"
-    },
-    {
-      "类别": "数据",
-      "工具": [
-        "Python",
-        "Tableau"
-      ],
-      "备注": "能上手"
-    }
-  ],
-  "能力标签": [
-    {
-      "标签": "系统化",
-      "说明": "把零散流程标准化",
-      "支撑经历": [
-        "e1",
-        "e2"
-      ]
-    },
-    {
-      "标签": "自动化",
-      "说明": "减少重复人工",
-      "支撑经历": [
-        "e3"
-      ]
-    }
-  ],
-  "转型叙事": {
-    "一句话": "从「亲历人力硬扛的极限状态」到「用系统化方法降低消耗」。",
-    "为什么转行": "想让重复劳动可被方法替代。",
-    "两分钟自我介绍": "我做 X，擅长把 Y 标准化成 Z。"
-  },
-  "核实修正": [
-    {
-      "项": "示例项",
-      "原表述": "（待核实）",
-      "问题": "无依据",
-      "修正后": "以实际数据为准"
-    }
-  ],
-  "优势": [
-    "条理性",
-    "落地意识"
-  ],
-  "风险追问": [
-    {
-      "问题": "某项目的具体结果如何量化？",
-      "要点": [
-        "看板覆盖数",
-        "逾期率变化"
-      ]
-    }
-  ]
-};</script>
+
+
+
 <script>
 /* =========================================================
    秋招信息工作台
@@ -1210,6 +1388,16 @@ details.schema[open] summary::before{transform:rotate(90deg)}
 (function(){
 'use strict';
 
+/* JD 板块标题表（sectionOf 依赖，置于最顶部以确保在顶层 JDCMPS 初始化前已就绪） */
+var SECTION_HEADS = {
+  duty:    ['岗位职责','工作职责','岗位职能','职责描述','职位描述','job description','responsibilit'],
+  req:     ['任职要求','岗位要求','任职资格','任职条件','应聘条件','应聘要求','qualification'],
+  plus:    ['加分项','优先条件','优先','bonus'],
+  benefit: ['福利待遇','薪酬福利','薪资福利','公司福利','福利'],
+  company: ['公司简介','公司介绍','企业介绍','关于我们','单位简介','团队介绍','about us'],
+  contact: ['联系方式','投递方式','简历投递','应聘方式','报名方式','联系人','投递邮箱','how to apply']
+};
+
 /* ---------------- 常量 ---------------- */
 var LS_STATE = 'qz_workbench_state_v1';
 var LS_MANUAL= 'qz_workbench_manual_v1';
@@ -1217,6 +1405,8 @@ var LS_EXPOV = 'qz_workbench_expov_v1';
 var LS_JD    = 'qz_workbench_jd_v1';
 var LS_IV    = 'qz_workbench_interviews_v1';
 var LS_PREP  = 'qz_workbench_prep_v1';
+var LS_JDCMP = 'qz_workbench_jdcmp_v1';
+var LS_PROFILE= 'qz_workbench_profile_v1';
 var IDB_NAME = 'qz_workbench_db';
 var IDB_EXP  = 'qz_workbench_exp_db';
 
@@ -1235,6 +1425,16 @@ var MARKS = [
   { key:'part',  label:'部分匹配', cls:'mk-part'  },
   { key:'gap',   label:'缺口',     cls:'mk-gap'   },
   { key:'tbd',   label:'待确认',   cls:'mk-tbd'   }
+];
+
+/* JD 多岗位对比：抽取字段定义（顺序即并排对比表的行顺序） */
+var CMP_FIELDS = [
+  { k:'pos',      label:'岗位',     long:false },
+  { k:'city',     label:'城市',     long:false },
+  { k:'salary',   label:'薪资',     long:false },
+  { k:'deadline', label:'截止',     long:false },
+  { k:'req',      label:'核心要求', long:true  },
+  { k:'duty',     label:'岗位职责', long:true  }
 ];
 var MARKS_CLS = { match:'mk-match', part:'mk-part', gap:'mk-gap', tbd:'mk-tbd' };
 var MARKS_CNT = { match:'c-match',  part:'c-part',  gap:'c-gap',  tbd:'c-tbd'  };
@@ -1283,7 +1483,7 @@ var PREP_ITEMS = [
   { g:'材料', items:[
     { id:'m1', t:'按 JD 定制的简历 PDF', d:'文件名带姓名+岗位，不要用「简历.pdf」' },
     { id:'m2', t:'作品集 / 案例集', d:'挑 2–3 个与 JD 最相关的，能讲清背景-动作-结果' },
-    { id:'m3', t:'学历与成绩证明', d:'学籍验证报告、成绩单（研究生课程成绩可佐证方法论）' },
+    { id:'m3', t:'学历与成绩证明', d:'学籍验证报告、成绩单（MBA 课程成绩可佐证方法论）' },
     { id:'m4', t:'证书扫描件', d:'CET-6、雅思、职业资格证' },
     { id:'m5', t:'离职证明 / 在职证明', d:'视岗位要求准备' }
   ]},
@@ -1316,17 +1516,46 @@ var STATE = load(LS_STATE, {});
 var MANUAL = load(LS_MANUAL, []);
 var EXPDATA = { updatedAt:'', items:[], 优势:[], 风险追问:[], 教育背景:[], 工具技能:[], 能力标签:[], 转型叙事:null, 核实修正:[], _来源:'', _字段说明:null };
 var EXPOV = load(LS_EXPOV, {});
+var expLoaded = false; /* 经历库 experience.json 是否已载入；未载入时匹配度无意义 */
 var JDS = load(LS_JD, []);
 var IVS = load(LS_IV, []);
 var PREP = load(LS_PREP, {});
+var JDCMPS = load(LS_JDCMP, seedJdCmp());
 
-var sortKey = 'deadline', sortDir = 1;
+var sortKey = 'publishDate', sortDir = -1; /* 默认按发布时间降序：最新岗位排最上面 */
+var TODAY_STR = (function(){ var d = new Date(), p = function(n){ return String(n).padStart(2,'0'); };
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate()); })();
 var trackFilter = '';
+var poolScoreFilter = false;
+var poolHideExpired = false;
+var poolHideFail = false;
 var editingId = null, editingExpId = null;
+var pendingImg = '';
+var IMG_MAX_W = 800;
 var curJd = null;
 var fileTarget = 'jobs';
 var _dirty = true;
 var openIvIds = {};
+var cmpView = 'compare';
+/* 用户资质档案：硬性要求判定的基准。缺失字段自动补齐，兼容旧档案 */
+var PROFILE = (function(){
+  var def = { majors:['建筑学','城市设计','城市规划','景观','工商管理','MBA'],
+              degrees:['硕士','学士'], certs:['CET-6','雅思'],
+              campus:'2027届', birthYear:1996, politics:'', workYears:4 };
+  var p = load(LS_PROFILE, null);
+  if (!p || typeof p !== 'object') p = {};
+  var migrated = (p.degrees == null);
+  Object.keys(def).forEach(function(k){ if (p[k] == null) p[k] = def[k]; });
+  ['majors','degrees','certs'].forEach(function(k){ if (!Array.isArray(p[k])) p[k] = def[k]; });
+  if (typeof p.birthYear !== 'number' || !p.birthYear) p.birthYear = def.birthYear;
+  if (typeof p.workYears !== 'number') p.workYears = def.workYears;
+  // 旧档案把学历塞在 majors 里，迁移时剔除，避免专业匹配误判
+  if (migrated){
+    p.majors = p.majors.filter(function(m){ return !/(博士|硕士|研究生|学士|本科|大专)/i.test(m); });
+    if (!p.majors.length) p.majors = def.majors;
+  }
+  return p;
+})();
 
 /* ---------------- 工具 ---------------- */
 function load(k,d){ try{ var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } }
@@ -1369,9 +1598,287 @@ function normalize(raw){
     source: s_(raw.来源 != null ? raw.来源 : raw.source),
     publishDate: parseDate(raw.发布时间 != null ? raw.发布时间 : raw.publishDate),
     link: s_(raw.公告链接 != null ? raw.公告链接 : raw.link),
+    raw: s_(raw._raw != null ? raw._raw : (raw.raw != null ? raw.raw : raw.JD原文)),
     note: s_(raw.备注),
-    _manual: !!raw._manual
+    _img: s_(raw._img),
+    _req: s_(raw._req != null ? raw._req : raw.硬性专业),
+    _req_hard: Array.isArray(raw._req_hard) ? raw._req_hard : null,
+    _req_soft: Array.isArray(raw._req_soft) ? raw._req_soft : null,
+    _req_raw: s_(raw._req_raw),
+    _manual: !!raw._manual,
+    appliedStatus: s_(raw.投递状态 != null ? raw.投递状态 : raw.appliedStatus),
+    appliedDateData: s_(raw.投递日期 != null ? raw.投递日期 : raw.appliedDateData),
+    salary: s_(raw.薪资 != null ? raw.薪资 : raw.salary),
+    headcount: s_(raw.招聘人数 != null ? raw.招聘人数 : raw.headcount),
+    eduReq: s_(raw.学历要求 != null ? raw.学历要求 : raw.eduReq),
+    expReq: s_(raw.经验要求 != null ? raw.经验要求 : raw.expReq),
+    dept: s_(raw.部门 != null ? raw.部门 : raw.dept),
+    majorReq: s_(raw.专业要求 != null ? raw.专业要求 : raw.majorReq),
+    majorMatch: s_(raw.专业匹配 != null ? raw.专业匹配 : raw.majorMatch)
   };
+}
+
+/* ---- 经历库匹配度 ---- */
+/* 关键词命中：短 ASCII 词（如 AI）要求词边界，避免误命中 email/maintain 等 */
+function kwHit(text, kw){
+  kw = String(kw).toLowerCase();
+  var t = String(text || '').toLowerCase();
+  var i = t.indexOf(kw);
+  if (i === -1) return false;
+  if (kw.length >= 3) return true; // 中文或较长词：子串即可
+  var before = i > 0 ? t.charAt(i-1) : ' ';
+  var after = (i + kw.length < t.length) ? t.charAt(i + kw.length) : ' ';
+  return !(/[a-z0-9]/i.test(before) || /[a-z0-9]/i.test(after));
+}
+function expKeywordSet(){
+  var set = {};
+  function add(s){ if (s) set[String(s).toLowerCase()] = true; }
+  function addArr(a){ if (Array.isArray(a)) a.forEach(add); }
+  expItems().forEach(function(i){
+    addArr(i.关键词);
+    addArr(i.方向标签);
+    var blob = [i.标题, i.组织, i.背景, i.动作, i.结果, i.量化].filter(Boolean).join(' ');
+    KEYWORDS.forEach(function(k){ if (kwHit(blob, k)) add(k); });
+  });
+  addArr((EXPDATA.能力标签 || []).map(function(t){ return t && t.标签; }));
+  (EXPDATA.工具技能 || []).forEach(function(g){
+    if (g && Array.isArray(g.工具)) g.工具.forEach(add);
+    else if (g && Array.isArray(g.items)) g.items.forEach(add);
+  });
+  (EXPDATA.优势 || []).forEach(function(k){
+    if (typeof k === 'string') add(k);
+    else if (k && k.优势) add(k.优势);
+  });
+  if (EXPDATA.转型叙事 && typeof EXPDATA.转型叙事 === 'object'){
+    Object.keys(EXPDATA.转型叙事).forEach(function(kk){
+      var v = EXPDATA.转型叙事[kk];
+      if (typeof v === 'string') KEYWORDS.forEach(function(k){ if (kwHit(v, k)) add(k); });
+    });
+  }
+  return set;
+}
+function jobKeywordSet(text){
+  var set = {};
+  KEYWORDS.forEach(function(k){ if (kwHit(text, k)) set[k.toLowerCase()] = true; });
+  return Object.keys(set);
+}
+function matchScore(text){
+  var jkw = jobKeywordSet(text);
+  if (!jkw.length) return 0;
+  var expKw = expKeywordSet();
+  var hit = 0;
+  jkw.forEach(function(k){ if (expKw[k]) hit++; });
+  return Math.round(hit / jkw.length * 100);
+}
+function scoreOf(j){
+  return matchScore([j.org, j.position, j.category, j.batch, j.source, j.raw].join(' '));
+}
+function scoreLabel(n){
+  if (n >= 80) return '高匹配';
+  if (n >= 60) return '较匹配';
+  if (n >= 40) return '一般';
+  return '弱匹配';
+}
+function scoreClass(n){
+  if (n >= 80) return 'sc-high';
+  if (n >= 60) return 'sc-mid';
+  if (n >= 40) return 'sc-low';
+  return 'sc-weak';
+}
+/* ============================================================
+   硬性要求（_req_hard） vs 可迁移能力（_req_soft）
+
+   _req_hard 是「分组」结构：组内 OR、组间 AND
+     {"k":"edu","min":5}                    学历门槛（阶梯：博士6/硕士5/本科3/大专2）
+     {"k":"campus","opts":["2027届","2026届"]}
+     {"k":"major","opts":["电气工程","能源动力类"]}
+     {"k":"age","max":30} {"k":"exp","years":0}
+     {"k":"cert","opts":["CET-6"]} {"k":"politics","opts":["中共党员"]}
+   → 任一组不满足即判 fail（淘汰）；_req_soft 可迁移能力只影响匹配度，不淘汰。
+   ============================================================ */
+var EDU_STEPS = [[7,/博士后/],[6,/博士/],[5,/硕士研究生|硕士|研究生/],
+                 [3,/本科|学士|大学本科/],[2,/大专|专科|高职/],[1,/中专|中职/],[0,/高中|技校/]];
+function eduLevelOf(t){
+  var s = String(t || '');
+  for (var i = 0; i < EDU_STEPS.length; i++){ if (EDU_STEPS[i][1].test(s)) return EDU_STEPS[i][0]; }
+  return -1;
+}
+function userEduLevel(){
+  var lv = -1;
+  (PROFILE.degrees || []).forEach(function(d){ lv = Math.max(lv, eduLevelOf(d)); });
+  return lv;
+}
+function userAge(){
+  var by = parseInt(PROFILE.birthYear, 10) || 0;
+  return by ? (new Date().getFullYear() - by) : 99;
+}
+/* 专业粗分类：要求侧与档案侧都映射到类别后取交集，避免「工商管理 vs 管理类」误杀
+   关键词是按真实岗位库里出现过的专业写法补齐的（如"统计类""财务相关专业""网络与安全类"
+   "建筑施工类相关专业"等以前没覆盖到，导致 catOf 返回空、majorOk 直接"存疑不淘汰"漏判）。*/
+var CATS = {
+  计算机:['计算机','软件','人工智能','智能科学','数据科学','大数据','信息安全','网络空间安全','网络安全','网络与安全','网络工程','物联网','数字媒体技术','计算机应用','计算科学','数据智能'],
+  电子信息:['电子信息','电子科学','电子工程','电子','通信','通讯','微电子','集成电路','光电','半导体','信息工程','电信','信号'],
+  电气能源:['电气','能源动力','能源与动力','动力工程','电力系统','自动化','控制科学','控制工程','机械','仪器','核工程','热能','储能','新能源','智能制造','航空','航天','飞行器','宇航'],
+  土建:['土建','建筑学','建筑工程','建筑施工','土木工程','城市规划','城乡规划','城市设计','风景园林','景观','给排水','暖通','供热','结构工程','工程管理','工程造价','交通工程','道路','桥梁','市政','测绘','地理信息','安全工程','环境工程','环保','水利工程'],
+  管理:['工商管理','管理学','mba','行政管理','秘书','市场营销','营销','人力资源管理','人力资源','财务管理','财务','会计学','会计','审计学','审计','项目管理','物流管理','物流','供应链管理','旅游管理','酒店管理','信息管理','工业工程','电子商务','国际贸易','国际商务','管理科学'],
+  经济金融:['经济学','经济','金融学','金融','财政学','税收','保险','投资','精算'],
+  法学:['法学','法律','政治学','思想政治教育','社会学','民族学','马克思主义'],
+  文学外语:['汉语言','中文','新闻学','新闻传播','传播学','广告学','外语','英语','日语','翻译','广播电视','网络与新媒体','新媒体'],
+  艺术设计:['艺术设计','设计学','视觉传达','环境设计','工业设计','产品设计','服装','美术学','艺术学','动画','数字媒体艺术'],
+  数理:['数学','统计学','统计','应用统计','物理学','应用物理','化学','力学','生物','材料'],
+  医药:['临床医学','药学','中药','护理','公共卫生','医学','生物医学'],
+  教育:['教育学','心理学','应用心理','学前教育','小学教育','体育'],
+  农林地矿:['农学','林学','园艺','动物医学','地质','矿业','石油','冶金','材料科学']
+};
+/* 「理工类相关专业」「文科类/文综类相关专业」这种笼统提法，字面上不含任何具体学科词，
+   以前一律判"存疑不淘汰"。现在按大类兜底判断：要求理工科但你是纯文科专业（反之亦然）→ 仍会被挡下；
+   真正模糊、连理工/文科都分不清的（如"专业不限""相关专业"）才继续按"存疑不淘汰"处理。 */
+var STEM_CATS = ['计算机','电子信息','电气能源','土建','数理','农林地矿','医药'];
+var HUMAN_CATS = ['管理','经济金融','法学','文学外语','艺术设计','教育'];
+function catOf(t){
+  var s = String(t || '').toLowerCase(), out = {};
+  for (var cat in CATS){
+    for (var i = 0; i < CATS[cat].length; i++){
+      if (s.indexOf(CATS[cat][i].toLowerCase()) !== -1){ out[cat] = 1; break; }
+    }
+  }
+  if (!Object.keys(out).length){
+    if (/理工|理科/.test(s)) STEM_CATS.forEach(function(c){ out[c] = 1; });
+    else if (/文科|文综|人文社科|人文社会/.test(s)) HUMAN_CATS.forEach(function(c){ out[c] = 1; });
+  }
+  return out;
+}
+function majorOk(opts){
+  if (!opts || !opts.length) return true;
+  var req = {}, has = false, k;
+  opts.forEach(function(o){
+    var c = catOf(o);
+    for (k in c){ req[k] = 1; has = true; }
+  });
+  if (!has) return true;                       // 「专业对口」无具体学科 → 存疑，不淘汰
+  var mine = {};
+  (PROFILE.majors || []).forEach(function(m){ var c = catOf(m); for (k in c) mine[k] = 1; });
+  for (k in req){ if (mine[k]) return true; }
+  for (var i = 0; i < opts.length; i++){        // 兜底：字面包含
+    for (var n = 0; n < (PROFILE.majors || []).length; n++){
+      var a = s_(opts[i]), b = s_(PROFILE.majors[n]);
+      if (a && b && (a.indexOf(b) !== -1 || b.indexOf(a) !== -1)) return true;
+    }
+  }
+  return false;
+}
+function campusOk(opts){
+  if (!opts || !opts.length) return true;
+  var mine = s_(PROFILE.campus);
+  for (var i = 0; i < opts.length; i++){
+    var o = s_(opts[i]);
+    if (!o) continue;
+    if (mine && o === mine) return true;
+    if (/应届|择业期|未就业|在校生|留学生/.test(o)) return true;
+    if (mine && (o.indexOf(mine) !== -1 || mine.indexOf(o) !== -1)) return true;
+  }
+  return false;
+}
+function certOk(opts){
+  if (!opts || !opts.length) return true;
+  var mine = (PROFILE.certs || []).map(function(x){ return s_(x).toUpperCase(); });
+  for (var i = 0; i < opts.length; i++){
+    var a = s_(opts[i]).toUpperCase();
+    for (var n = 0; n < mine.length; n++){
+      var b = mine[n];
+      if (a && b && (a.indexOf(b) !== -1 || b.indexOf(a) !== -1)) return true;
+    }
+  }
+  return false;
+}
+/* 专业要求里有没有「一个具体学科都归不了类」的笼统项（"专业不限""相关专业"等）——
+   这类没法算出来，不该悄悄当成已核实通过。 */
+function majorAmbiguous(opts){
+  if (!opts || !opts.length) return false;
+  for (var i = 0; i < opts.length; i++){ if (Object.keys(catOf(opts[i])).length) return false; }
+  return true;
+}
+/* 返回 { st:'unknown'|'ok'|'fail', bad:[未满足项原文], unsure:[需人工确认的原文] } */
+function hardCheck(j){
+  var hard = (j && j._req_hard) ? j._req_hard : null;
+  if (hard && hard.length){
+    var bad = [], unsure = [];
+    hard.forEach(function(g){
+      if (!g) return;
+      var t = g.t || '';
+      switch (g.k){
+        case 'edu':      if (userEduLevel() < (parseInt(g.min,10) || 0)) bad.push(t || '学历不达门槛'); break;
+        case 'campus':   if (!campusOk(g.opts)) bad.push(t || '届别不符'); break;
+        case 'major':
+          if (!majorOk(g.opts)) bad.push(t || '专业不符');
+          else if (majorAmbiguous(g.opts)) unsure.push(t || (g.opts || []).join('/') || '专业要求笼统');
+          break;
+        case 'age':      if (userAge() > (g.max == null ? 99 : parseInt(g.max,10))) bad.push(t || '年龄超限'); break;
+        case 'exp':      if ((parseInt(PROFILE.workYears,10) || 0) < (parseInt(g.years,10) || 0)) bad.push(t || '工作经验不足'); break;
+        case 'cert':     if (!certOk(g.opts))   bad.push(t || '证书不符'); break;
+        case 'politics': if (!s_(PROFILE.politics)) bad.push(t || '政治面貌不符'); break;
+      }
+    });
+    return { st: bad.length ? 'fail' : 'ok', bad: bad, unsure: unsure };
+  }
+  /* 兼容旧数据：只有 _req 字符串 */
+  var r = s_(j && j._req).toLowerCase();
+  if (!r) return { st: 'unknown', bad: [], unsure: [] };
+  var pool = [];
+  (PROFILE.majors  || []).forEach(function(m){ if (m) pool.push(s_(m).toLowerCase()); });
+  (PROFILE.degrees || []).forEach(function(m){ if (m) pool.push(s_(m).toLowerCase()); });
+  (PROFILE.certs   || []).forEach(function(m){ if (m) pool.push(s_(m).toLowerCase()); });
+  var core = r.replace(/(专业|方向|相关|优先|以上|及以|类别|类)/g, '').trim();
+  var hit = [core, r].some(function(base){
+    if (!base) return false;
+    for (var i = 0; i < pool.length; i++){
+      var p = pool[i];
+      if (p && (base.indexOf(p) !== -1 || p.indexOf(base) !== -1)) return true;
+    }
+    return false;
+  });
+  return { st: hit ? 'ok' : 'fail', bad: hit ? [] : [s_(j && j._req)], unsure: [] };
+}
+function saveProfile(){ save(LS_PROFILE, PROFILE); }
+/* 匹配度徽章：硬性要求逐条打勾 → 通过后才看关键词覆盖率 */
+function majorBadgeHtml(j){
+  var m = j.majorMatch || '未标明';
+  var cls = m === '匹配' ? 'mj-match' : (m === '不符' ? 'mj-no' : 'mj-un');
+  var req = j.majorReq ? '<div class="mj-req" title="' + esc(j.majorReq) + '">' + esc(j.majorReq) + '</div>' : '';
+  if (m === '未标明'){
+    return '<span class="mj-badge mj-un" title="JD 未写明专业要求，或无法自动识别">未标明</span>' + req;
+  }
+  var tip = m === '匹配' ? '专业要求与你的背景（建筑学/城设/MBA + 行政人力运营）对口' : '专业要求明显不对口（如电气/自动化/机械/化材/医学等），建议跳过';
+  return '<span class="mj-badge ' + cls + '" title="' + tip + '">' + (m === '匹配' ? '✓ 对口' : '✕ 不对口') + '</span>' + req;
+}
+function matchBadgeHtml(j){
+  var h = hardCheck(j);
+  var score = scoreOf(j);
+  var soft = (j && j._req_soft) ? j._req_soft.length : 0;
+  var noExp = !expLoaded;
+  if (h.st === 'fail'){
+    return '<span class="score-badge sc-fail" title="硬性要求不满足（' + h.bad.length + ' 项）：'
+      + esc(h.bad.join('；')) + ' — 这些是一条不满足就会被刷掉的硬门槛，建议直接跳过">硬性不符 ⚠</span>'
+      + '<span class="score-sub" title="' + esc(h.bad.join('；')) + '">' + esc(h.bad[0].slice(0, 18)) + '</span>';
+  }
+  var html = '';
+  if (noExp){
+    html += '<span class="score-badge sc-weak" title="经历库 experience.json 尚未载入，匹配度无法计算。点「经历库」页导入 experience.json，或确认与 jobs.json 同目录。">经历库未载入</span>';
+  }
+  if (h.st === 'ok'){
+    var n = (j && j._req_hard) ? j._req_hard.length : 0;
+    html += '<span class="score-badge sc-ok" title="已核对 ' + n + ' 项硬性要求，全部满足">硬性符合 ✓</span>';
+  }
+  if (h.unsure && h.unsure.length){
+    html += '<span class="score-badge sc-weak" title="专业要求写得比较笼统（' + esc(h.unsure.join('；'))
+      + '），系统判断不了是否对口，没有把这条算进"硬性符合"，建议自己核对一下原文">专业待确认 ?</span>';
+  }
+  html += '<span class="score-badge ' + scoreClass(score) + '" title="经历库关键词覆盖率：' + score + '%（衡量可迁移能力的重合度，非硬性门槛）">'
+    + score + '% · ' + scoreLabel(score) + '</span>';
+  if (soft){
+    html += '<span class="score-sub" title="可迁移能力 ' + soft + ' 项：不满足也不会被刷掉，只影响匹配度">可迁移 ' + soft + '</span>';
+  }
+  return html;
 }
 function normExp(raw){
   return {
@@ -1391,26 +1898,14 @@ function normExp(raw){
 var fileInput = document.getElementById('fileInput');
 var fileInputBak = document.getElementById('fileInputBak');
 
+/* 文件选择：直接用最基础的 <input type=file>，不用 File System Access API。
+   之前用 showOpenFilePicker + IndexedDB 存句柄那套，在 file:// 本地页面里权限状态
+   经常失效、Safari 也完全不支持这个 API，导致点「更新」有时候弹不出选择框、
+   或者选了文件也没反应——这是「点更新选不了 jobs.json / experience.json 导不进」的根源。
+   换成最原始的方案后，每次点击都 100% 弹出系统文件选择框，选哪个文件读哪个。 */
 function pickFile(target){
   fileTarget = target || 'jobs';
-  var dbName = (target === 'exp') ? IDB_EXP : IDB_NAME;
-  openPicker(dbName, function(h){ return idbPut(dbName, h); },
-    function(h){ readHandle(h, true).then(function(ok){ if(!ok) fileInput.click(); }); },
-    function(){ fileInput.click(); });
-}
-function openPicker(dbName, put, onHandle, fallback){
-  if (window.showOpenFilePicker){
-    window.showOpenFilePicker({
-      types:[{ description:'JSON 数据文件', accept:{'application/json':['.json']} }],
-      multiple:false
-    }).then(function(hs){
-      var h = hs[0];
-      try{ h.requestPermission({ mode:'read' }); }catch(e){}
-      put(h); onHandle(h);
-    }).catch(function(err){ if (err && err.name === 'AbortError') return; fallback(); });
-    return;
-  }
-  fallback();
+  fileInput.click();
 }
 
 fileInput.addEventListener('change', function(e){
@@ -1501,6 +1996,7 @@ function applyExp(obj, srcName, mtime){
   }) : [];
   EXPDATA._来源 = s_(obj._来源);
   EXPDATA._字段说明 = (obj._字段说明 && typeof obj._字段说明 === 'object') ? obj._字段说明 : null;
+  expLoaded = true;
   var keys = {}; EXPDATA.items.forEach(function(i){ keys[i.id] = 1; });
   if (EXPOV.items){ Object.keys(EXPOV.items).forEach(function(k){ if (keys[k]) delete EXPOV.items[k]; }); }
   if (EXPOV.deleted) EXPOV.deleted = EXPOV.deleted.filter(function(id){ return !keys[id]; });
@@ -1530,10 +2026,6 @@ function autoLoad(){
     if (et) et.textContent = (DATA.updatedAt || '内置数据') + '（内置）';
     var bn = document.getElementById('banner'); if (bn) bn.classList.add('hide');
     renderAll();
-  }
-  // 1.5) 内置经历库：file:// 直接可见，无需联网或手动选择文件
-  if (window.EMBEDDED_EXP && (!EXPDATA.items || !EXPDATA.items.length)){
-    try { applyExp(window.EMBEDDED_EXP, '内置', ''); } catch(e){ console.warn('内置经历库载入失败', e); }
   }
   // 2) 联网/同目录 fetch：http 下自动刷新为最新；file:// 下失败则保留内置数据
   tryFetch('./jobs.json?t=' + Date.now())
@@ -1625,6 +2117,31 @@ function st(id){
 function setStatus(id, key){
   var o = st(id); o.status = key; o.updatedAt = nowStr();
   if (key !== 'not_applied' && !o.appliedDate) o.appliedDate = parseDate(new Date()) || '';
+  save(LS_STATE, STATE);
+}
+/* 数据侧「投递状态」→ 初始状态种子：仅在浏览器无 localStorage 覆盖时注入，
+   尊重用户后续在 UI 里的手动修改（一旦 localStorage 有值就不再回写）。 */
+var STATUS_LABEL2KEY = { '未投递':'not_applied','已投递':'applied','笔试中':'written','面试中':'interview','offer':'offer','已拒绝':'rejected' };
+function seedStatusFromData(){
+  ROWS.forEach(function(j){
+    var id = j.id;
+    var cn = j.appliedStatus;
+    if (!cn) return;
+    var key = STATUS_LABEL2KEY[cn] || cn;
+    if (!STATUS_MAP[key]) return;
+    var cur = STATE[id];
+    /* 数据侧明确标注了状态：
+       - 浏览器从未动过该条目（cur 不存在）→ 直接以数据侧为准；
+       - 浏览器只是默认「未投递」（从没显式操作过）→ 用数据侧覆盖，避免「已投递只有 3 条」这类漏算；
+       - 浏览器已显式改成其他状态（已投递/笔试/面试/offer/已拒绝）→ 尊重用户手动操作，不回写。 */
+    if (cur && cur.status !== 'not_applied') return;
+    STATE[id] = {
+      status: key,
+      appliedDate: j.appliedDateData || (cur ? cur.appliedDate : ''),
+      note: cur ? cur.note : '',
+      updatedAt: cur ? cur.updatedAt : ''
+    };
+  });
   save(LS_STATE, STATE);
 }
 function timeBucket(j){
@@ -1807,12 +2324,17 @@ function renderPool(){
   var cat = document.getElementById('fCat').value;
   var bat = document.getElementById('fBatch').value;
   var tm  = document.getElementById('fTime').value;
+  var mj  = document.getElementById('fMajor').value;
 
   var rows = ROWS.filter(function(j){
-    if (q && (j.org + j.position + j.source + j.category + j.batch).toLowerCase().indexOf(q) === -1) return false;
+    if (q && (j.org + j.position + j.source + j.category + j.batch + (j.majorReq||'') + (j.salary||'')).toLowerCase().indexOf(q) === -1) return false;
     if (cat && j.category !== cat) return false;
     if (bat && j.batch !== bat) return false;
     if (tm && timeBucket(j) !== tm) return false;
+    if (mj && (j.majorMatch || '未标明') !== mj) return false;
+    if (poolScoreFilter && (scoreOf(j) < 60 || hardCheck(j).st === 'fail')) return false;
+    if (poolHideExpired){ var _dl = daysLeft(j.deadline); if (_dl !== null && _dl < 0) return false; }
+    if (poolHideFail && hardCheck(j).st === 'fail') return false;
     return true;
   });
 
@@ -1825,7 +2347,11 @@ function renderPool(){
       else if (db2 === null) r = -1;
       else r = da - db2;
     } else {
-      r = (a.publishDate||'').localeCompare(b.publishDate||'');
+      /* 发布时间在未来（多为双选会活动日期误填）→ 视为无效沉底，保证真实最新岗位置顶 */
+      var pa = a.publishDate || '', pb2 = b.publishDate || '';
+      if (pa > TODAY_STR) pa = '';
+      if (pb2 > TODAY_STR) pb2 = '';
+      r = pa.localeCompare(pb2);
     }
     return r * sortDir;
   });
@@ -1837,19 +2363,26 @@ function renderPool(){
     else if (d < 0) dlHtml = '<span class="dl" style="color:var(--muted);text-decoration:line-through">' + esc(j.deadline) + '</span><small>已截止</small>';
     else dlHtml = '<span class="dl" style="color:' + (d<=7?'var(--coral-deep)':(d<=14?'#B87A16':'var(--ink-2)')) + '">' + esc(j.deadline) + '<small>剩 ' + d + ' 天</small></span>';
     var link = j.link ? '<a class="lnk" href="' + esc(j.link) + '" target="_blank" rel="noopener">打开</a>' : '<span class="no-link">—</span>';
+    var score = scoreOf(j);
+    var scoreBadge = matchBadgeHtml(j);
 
+    var cam = j._img ? '<button class="btn btn-sm btn-cam" data-img="' + esc(j.id) + '" title="查看截图">' + CAM_SVG + '</button>' : '';
     return '<tr>' +
       '<td class="cell-org" data-l="单位">' + esc(j.org || '未填写') +
         (j._manual ? ' <span class="tag" style="background:var(--coral-soft);color:var(--coral-deep)">手动</span>' : '') +
         '<div class="sub">' + esc(j.source || '来源未填') + '</div></td>' +
-      '<td class="ell" data-l="岗位">' + esc(j.position || '—') + '</td>' +
+      '<td class="ell" data-l="岗位">' + esc(j.position || '—') + '<div class="sub">' + scoreBadge + '</div></td>' +
       '<td data-l="类别"><span class="tag tag-cat">' + esc(j.category || '未分类') + '</span></td>' +
       '<td data-l="批次">' + (j.batch ? '<span class="tag tag-batch">' + esc(j.batch) + '</span>' : '<span class="date-empty">—</span>') + '</td>' +
       '<td data-l="截止时间">' + dlHtml + '</td>' +
       '<td data-l="发布时间">' + (j.publishDate ? '<span class="dl" style="font-weight:400">' + esc(j.publishDate) + '</span>' : '<span class="date-empty">—</span>') + '</td>' +
       '<td class="ell" data-l="来源">' + (j.source ? esc(j.source) : '<span class="date-empty">—</span>') + '</td>' +
+      '<td data-l="薪资">' + (j.salary ? '<span class="salary">' + esc(j.salary) + '</span>' : '<span class="date-empty">—</span>') +
+        (j.headcount ? '<div class="sub">招 ' + esc(j.headcount) + ' 人</div>' : '') + '</td>' +
+      '<td data-l="专业要求">' + majorBadgeHtml(j) + '</td>' +
+      '<td data-l="学历">' + (j.eduReq ? esc(j.eduReq) + (j.expReq ? '<div class="sub">' + esc(j.expReq) + '</div>' : '') : '<span class="date-empty">—</span>') + '</td>' +
       '<td data-l="公告">' + link + '</td>' +
-      '<td data-l="操作"><div class="row-actions">' +
+      '<td data-l="操作"><div class="row-actions">' + cam +
         '<button class="btn btn-sm" data-edit="' + esc(j.id) + '">编辑</button>' +
         '<button class="btn btn-sm btn-danger" data-del="' + esc(j.id) + '">删除</button>' +
       '</div></td></tr>';
@@ -1859,6 +2392,7 @@ function renderPool(){
   var tb = document.getElementById('poolBody');
   Array.prototype.forEach.call(tb.querySelectorAll('[data-edit]'), function(b){ b.onclick = function(){ openModal(b.dataset.edit); }; });
   Array.prototype.forEach.call(tb.querySelectorAll('[data-del]'), function(b){ b.onclick = function(){ delJob(b.dataset.del); }; });
+  Array.prototype.forEach.call(tb.querySelectorAll('[data-img]'), function(b){ b.onclick = function(){ var jj = ROWS.filter(function(x){ return x.id === b.dataset.img; })[0]; if (jj && jj._img) openImgLightbox(jj._img); }; });
 
   Array.prototype.forEach.call(document.querySelectorAll('thead th.sortable'), function(th){
     var on = th.dataset.sort === sortKey;
@@ -1892,14 +2426,17 @@ function renderTrack(){
       : (d < 0 ? '<span class="dl" style="color:var(--muted)">' + esc(j.deadline) + '<small>已截止</small></span>'
                : '<span class="dl" style="color:' + (d<=7?'var(--coral-deep)':'var(--ink-2)') + '">' + esc(j.deadline) + '<small>剩 ' + d + ' 天</small></span>');
     var opts = STATUS.map(function(x){ return '<option value="' + x.key + '"' + (x.key === o.status ? ' selected' : '') + '>' + x.label + '</option>'; }).join('');
+    var score = scoreOf(j);
+    var scoreBadge = matchBadgeHtml(j);
+    var cam = j._img ? '<button class="btn btn-sm btn-cam" data-img="' + esc(j.id) + '" title="查看截图">' + CAM_SVG + '</button>' : '';
     return '<tr>' +
       '<td class="cell-org" data-l="单位">' + esc(j.org || '未填写') + '<div class="sub">' + esc(j.position || '—') + '</div></td>' +
-      '<td class="ell" data-l="岗位">' + esc(j.position || '—') + '</td>' +
+      '<td class="ell" data-l="岗位">' + esc(j.position || '—') + '<div class="sub">' + scoreBadge + '</div></td>' +
       '<td data-l="状态"><select class="status-select st-' + o.status + '" data-st="' + esc(j.id) + '">' + opts + '</select></td>' +
       '<td data-l="投递日期"><input class="inp" type="date" data-ad="' + esc(j.id) + '" value="' + esc(o.appliedDate) + '" style="padding:5px 8px;font-size:12px"></td>' +
       '<td data-l="截止时间">' + dlHtml + '</td>' +
       '<td class="note-cell" data-l="备注"><textarea class="note-inp" data-note="' + esc(j.id) + '" rows="1" placeholder="点击填写…">' + esc(o.note) + '</textarea></td>' +
-      '<td data-l="操作"><div class="row-actions"><button class="btn btn-sm" data-goto="' + esc(j.id) + '">详情</button></div></td>' +
+      '<td data-l="操作"><div class="row-actions">' + cam + '<button class="btn btn-sm" data-goto="' + esc(j.id) + '">详情</button></div></td>' +
     '</tr>';
   }).join('');
 
@@ -1923,6 +2460,7 @@ function renderTrack(){
     setTimeout(function(){ ta.style.height = 'auto'; ta.style.height = Math.min(120, ta.scrollHeight) + 'px'; }, 0);
   });
   Array.prototype.forEach.call(tb.querySelectorAll('[data-goto]'), function(b){ b.onclick = function(){ openModal(b.dataset.goto); }; });
+  Array.prototype.forEach.call(tb.querySelectorAll('[data-img]'), function(b){ b.onclick = function(){ var jj = ROWS.filter(function(x){ return x.id === b.dataset.img; })[0]; if (jj && jj._img) openImgLightbox(jj._img); }; });
 
   renderPipe('trackPipe', false);
   Array.prototype.forEach.call(document.querySelectorAll('#trackPipe .pipe-item'), function(el){
@@ -2656,6 +3194,7 @@ function wipe(){
   DATA = { updatedAt:'', jobs:[] };
   EXPDATA = { updatedAt:'', items:[], 优势:[], 风险追问:[], 教育背景:[], 工具技能:[],
               能力标签:[], 转型叙事:null, 核实修正:[], _来源:'', _字段说明:null };
+  expLoaded = false;
   _dirty = true; renderAll(); toast('本地数据已清空（重新载入请点「点击更新」或导入 JSON）');
 }
 
@@ -2674,10 +3213,83 @@ function openModal(id){
   document.getElementById('f_publishDate').value = j ? j.publishDate : '';
   document.getElementById('f_source').value = j ? j.source : '';
   document.getElementById('f_link').value = j ? j.link : '';
+  document.getElementById('f_req').value = j ? (j._req || '') : '';
+  updateReqHint();
+  var af = document.getElementById('f_autofill'); if (af) af.value = '';
+  var ah = document.getElementById('autofillHint'); if (ah){ ah.textContent = ''; ah.className = 'hint'; }
   document.getElementById('f_note').value = (j && STATE[id]) ? STATE[id].note : '';
+  pendingImg = (j && j._img) ? j._img : '';
+  renderImgThumb();
   document.getElementById('mask').classList.add('on');
 }
 function closeModal(){ document.getElementById('mask').classList.remove('on'); editingId = null; }
+function updateReqHint(){
+  var el = document.getElementById('reqHint');
+  if (!el) return;
+  var v = document.getElementById('f_req').value.trim();
+  if (!v){ el.textContent = '未填硬性要求，匹配度只按关键词覆盖率算。'; el.className = 'hint'; return; }
+  var r = hardCheck({ _req: v });
+  if (r.st === 'ok'){ el.textContent = '✓ 你的资质满足这条硬性要求。'; el.className = 'hint ok'; }
+  else { el.textContent = '⚠ 你的资质不满足「' + v + '」，保存后将标红「硬性不符」，可被「隐藏硬性不符」过滤掉。'; el.className = 'hint fail'; }
+}
+/* 最高学历 → 学位链（含向下兼容的学位） */
+var DEGREE_CHAIN = { 博士后:['博士后','博士','硕士','学士'], 博士:['博士','硕士','学士'],
+                     硕士:['硕士','学士'], 本科:['学士'], 大专:['大专'], 中专:['中专'] };
+function openProfile(){
+  var d = (PROFILE.degrees || []);
+  var top = '本科';
+  if (d.indexOf('博士后') !== -1) top = '博士后';
+  else if (d.indexOf('博士') !== -1) top = '博士';
+  else if (d.indexOf('硕士') !== -1) top = '硕士';
+  else if (d.indexOf('大专') !== -1) top = '大专';
+  else if (d.indexOf('中专') !== -1) top = '中专';
+  document.getElementById('p_majors').value   = (PROFILE.majors || []).join(', ');
+  document.getElementById('p_degree').value   = top;
+  document.getElementById('p_campus').value   = s_(PROFILE.campus) || '2027届';
+  document.getElementById('p_birth').value    = PROFILE.birthYear || '';
+  document.getElementById('p_work').value     = (PROFILE.workYears == null ? '' : PROFILE.workYears);
+  document.getElementById('p_politics').value = s_(PROFILE.politics);
+  document.getElementById('p_certs').value    = (PROFILE.certs || []).join(', ');
+  updateProfileSummary();
+  document.getElementById('maskProfile').classList.add('on');
+}
+function closeProfile(){ document.getElementById('maskProfile').classList.remove('on'); }
+/* 实时预览：按弹窗里当前填写的资质，岗位池有多少通过 / 多少硬性不符 */
+function updateProfileSummary(){
+  var el = document.getElementById('pSummary');
+  if (!el) return;
+  var keep = PROFILE, tv = function(id){ var e = document.getElementById(id); return e ? e.value : ''; };
+  PROFILE = {
+    majors:    tv('p_majors').split(/[,\n，、]/).map(function(s){ return s.trim(); }).filter(Boolean),
+    degrees:   DEGREE_CHAIN[tv('p_degree')] || ['学士'],
+    campus:    tv('p_campus'),
+    birthYear: parseInt(tv('p_birth'), 10) || 1996,
+    workYears: parseInt(tv('p_work'), 10) || 0,
+    politics:  tv('p_politics'),
+    certs:     tv('p_certs').split(/[,\n，、]/).map(function(s){ return s.trim(); }).filter(Boolean)
+  };
+  var ok = 0, bad = 0, none = 0;
+  ROWS.forEach(function(j){ var s = hardCheck(j).st; if (s === 'fail') bad++; else if (s === 'ok') ok++; else none++; });
+  PROFILE = keep;
+  el.className = 'hint';
+  el.innerHTML = '按当前资质：<b>' + ok + '</b> 个岗位硬性条件满足，'
+    + '<b style="color:#dc2626">' + bad + '</b> 个硬性不符（一条不满足即淘汰），'
+    + none + ' 个未抓到任职条件（暂不判定）。';
+}
+function saveProfileModal(){
+  PROFILE.majors = document.getElementById('p_majors').value
+    .split(/[,\n，、]/).map(function(s){ return s.trim(); }).filter(function(s){ return s; });
+  var top = document.getElementById('p_degree').value;
+  PROFILE.degrees = DEGREE_CHAIN[top] || ['学士'];
+  PROFILE.campus    = document.getElementById('p_campus').value;
+  PROFILE.birthYear = parseInt(document.getElementById('p_birth').value, 10) || 1996;
+  PROFILE.workYears = parseInt(document.getElementById('p_work').value, 10) || 0;
+  PROFILE.politics  = document.getElementById('p_politics').value;
+  PROFILE.certs = document.getElementById('p_certs').value
+    .split(/[,\n，、]/).map(function(s){ return s.trim(); }).filter(function(s){ return s; });
+  saveProfile(); closeProfile(); renderAll();
+  toast('资质档案已保存并重算全部岗位');
+}
 function saveModal(){
   var org = document.getElementById('f_org').value.trim();
   var pos = document.getElementById('f_position').value.trim();
@@ -2690,6 +3302,8 @@ function saveModal(){
     发布时间: document.getElementById('f_publishDate').value,
     来源: document.getElementById('f_source').value.trim(),
     公告链接: document.getElementById('f_link').value.trim(),
+    _req: document.getElementById('f_req').value.trim(),
+    _img: pendingImg,
     _manual: true
   };
   var note = document.getElementById('f_note').value;
@@ -2721,17 +3335,93 @@ function delJob(id){
   _dirty = true; renderAll(); toast('已删除');
 }
 
+var CAM_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>';
+function compressImg(file, cb){
+  if (!file || !file.type || file.type.indexOf('image') !== 0){ toast('请选择图片文件'); return; }
+  var reader = new FileReader();
+  reader.onload = function(){
+    var img = new Image();
+    img.onload = function(){
+      var w = img.width, h = img.height;
+      var scale = w > IMG_MAX_W ? IMG_MAX_W / w : 1;
+      var cw = Math.round(w * scale), ch = Math.round(h * scale);
+      var canvas = document.createElement('canvas');
+      canvas.width = cw; canvas.height = ch;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, cw, ch);
+      try { cb(canvas.toDataURL('image/jpeg', 0.82)); }
+      catch(e){ toast('图片处理失败：' + e.message); }
+    };
+    img.onerror = function(){ toast('图片解析失败'); };
+    img.src = reader.result;
+  };
+  reader.onerror = function(){ toast('文件读取失败'); };
+  reader.readAsDataURL(file);
+}
+function renderImgThumb(){
+  var box = document.getElementById('imgThumb');
+  var rm = document.getElementById('btnRmImg');
+  if (pendingImg){ box.innerHTML = '<img src="' + pendingImg + '" alt="职位截图">'; rm.style.display = ''; }
+  else { box.innerHTML = ''; rm.style.display = 'none'; }
+}
+function openImgLightbox(src){
+  var lb = document.getElementById('imgLightbox');
+  if (!lb) return;
+  document.getElementById('imgLightboxImg').src = src;
+  lb.classList.add('on');
+}
+
 /* =========================================================
    渲染总入口 / 导航
    ========================================================= */
 function go(page){
   Array.prototype.forEach.call(document.querySelectorAll('.nav-item'), function(b){ b.classList.toggle('active', b.dataset.page === page); });
   Array.prototype.forEach.call(document.querySelectorAll('.page'), function(p){ p.classList.toggle('active', p.id === 'page-' + page); });
+  syncAllTopScrollbars(); /* 切页后立即重算：刚显示的面板此前隐藏时无法测宽 */
+  setTimeout(syncAllTopScrollbars, 0); /* 布局稳定后再兜底一次 */
   try{ window.scrollTo({ top:0, behavior:'smooth' }); }catch(e){}
 }
+/* 顶部横向同步滚动条：在宽表格容器正上方生成一条镜像滚动条，
+   页面顶部即可左右拖动，与底部原生滚动条双向同步；容器不溢出时自动隐藏。 */
+function setupTopScrollbars(){
+  Array.prototype.forEach.call(document.querySelectorAll('.table-wrap'), function(wrap){
+    var bar = wrap._topbar;
+    if (!bar){
+      bar = document.createElement('div');
+      bar.className = 'top-scroll';
+      var inner = document.createElement('div');
+      inner.className = 'top-scroll-inner';
+      bar.appendChild(inner);
+      wrap.parentNode.insertBefore(bar, wrap);
+      wrap._topbar = bar;
+      bar._inner = inner;
+      bar.addEventListener('scroll', function(){ wrap.scrollLeft = bar.scrollLeft; });
+      wrap.addEventListener('scroll', function(){ bar.scrollLeft = wrap.scrollLeft; });
+      if (window.MutationObserver){
+        new MutationObserver(syncW).observe(wrap, { childList:true, subtree:true });
+      }
+      window.addEventListener('resize', syncW);
+    }
+    syncW();
+    function syncW(){
+      var over = wrap.scrollWidth > wrap.clientWidth + 1;
+      bar.style.display = over ? '' : 'none';
+      if (over) bar._inner.style.width = wrap.scrollWidth + 'px';
+    }
+    wrap._syncTopbar = syncW; /* 暴露给全局重同步：页面隐藏时测得宽度为 0，切回后需重算 */
+  });
+}
+/* 页面切换 / 布局变化后统一重算所有顶部滚动条的显隐与宽度 */
+function syncAllTopScrollbars(){
+  Array.prototype.forEach.call(document.querySelectorAll('.table-wrap'), function(wrap){
+    if (wrap._syncTopbar) wrap._syncTopbar();
+  });
+}
+window.addEventListener('load', syncAllTopScrollbars); /* 初次渲染时多数面板 display:none，load 后强制补算一次 */
+window.addEventListener('resize', syncAllTopScrollbars);
+
 function fillSelects(){
-  var cats = [], bats = [];
-  ROWS.forEach(function(j){
+  var cats = [], bats = [];  ROWS.forEach(function(j){
     if (j.category && cats.indexOf(j.category) === -1) cats.push(j.category);
     if (j.batch && bats.indexOf(j.batch) === -1) bats.push(j.batch);
   });
@@ -2750,7 +3440,9 @@ function fillSelects(){
 }
 function renderAll(){
   rebuildIfNeeded();
+  seedStatusFromData(); /* 数据侧「投递状态」种子：幂等，仅填浏览器无记录的条目 */
   fillSelects();
+  setupTopScrollbars(); /* 每个 .table-wrap 顶部放一条同步横向滚动条 */
   renderBoard();
   renderPool();
   renderTrack();
@@ -2758,6 +3450,7 @@ function renderAll(){
   renderJd();
   renderIv();
   renderPrep();
+  renderJdCmp();
   document.getElementById('badgePool').textContent = ROWS.length;
   document.getElementById('badgeExp').textContent = expItems().length;
   document.getElementById('badgeIv').textContent = IVS.length;
@@ -2785,10 +3478,65 @@ document.getElementById('btnExport').onclick = exportJobs;
 document.getElementById('btnBackupAll').onclick = backupAll;
 document.getElementById('btnImportBackup').onclick = function(){ fileInputBak.click(); };
 document.getElementById('btnWipe').onclick = wipe;
+/* 粘贴 JD 自动填「新增岗位」表单——非抓取渠道（自己刷到的、内推给的）的岗位，
+   不用再一个字段一个字段抄，粘贴原文就能把大半张表填掉。 */
+function normalizeDate(s){
+  var m = String(s||'').match(/(\d{4})[年\-\/.](\d{1,2})[月\-\/.](\d{1,2})/);
+  if (!m) return '';
+  var mm = ('0'+m[2]).slice(-2), dd = ('0'+m[3]).slice(-2);
+  return m[1] + '-' + mm + '-' + dd;
+}
+document.getElementById('btnAutofillJob').onclick = function(){
+  var raw = document.getElementById('f_autofill').value;
+  var hint = document.getElementById('autofillHint');
+  if (!raw.trim()){ hint.textContent = '先把 JD 原文粘贴到上面的框里。'; hint.className = 'hint fail'; return; }
+  var f = parseJd(raw);
+  var filled = [];
+  if (f.org){ document.getElementById('f_org').value = f.org; filled.push('单位'); }
+  if (f.pos){ document.getElementById('f_position').value = f.pos; filled.push('岗位'); }
+  var d = normalizeDate(f.deadline);
+  if (d){ document.getElementById('f_deadline').value = d; filled.push('截止时间'); }
+  if (f.req){ document.getElementById('f_req').value = f.req; updateReqHint(); filled.push('硬性要求'); }
+  if (!document.getElementById('f_source').value.trim()) document.getElementById('f_source').value = '用户粘贴JD（非抓取）';
+  var noteEl = document.getElementById('f_note');
+  var extra = [];
+  if (f.city) extra.push('城市：' + f.city);
+  if (f.salary) extra.push('薪资：' + f.salary);
+  if (f.duty) extra.push('岗位职责：' + f.duty);
+  if (!d && f.deadline) extra.push('截止（原文，未能识别成日期，自己核对）：' + f.deadline);
+  if (extra.length){
+    noteEl.value = (noteEl.value ? noteEl.value + '\n\n' : '') + '[自动识别] ' + extra.join('\n');
+    filled.push('备注（城市/薪资/职责）');
+  }
+  hint.textContent = filled.length ? ('已自动填：' + filled.join('、') + '。识别不准的地方自己改一下，改完点下方「保存」。')
+    : '没识别出结构化字段，可能是格式比较特殊——直接手动填下面的表就行。';
+  hint.className = filled.length ? 'hint ok' : 'hint';
+};
 
 document.getElementById('mClose').onclick = closeModal;
 document.getElementById('mCancel').onclick = closeModal;
 document.getElementById('mSave').onclick = saveModal;
+document.getElementById('btnPickImg').onclick = function(){ document.getElementById('f_img').click(); };
+document.getElementById('f_req').oninput = updateReqHint;
+document.getElementById('btnProfile').onclick = openProfile;
+document.getElementById('pClose').onclick = closeProfile;
+document.getElementById('pCancel').onclick = closeProfile;
+document.getElementById('pSave').onclick = saveProfileModal;
+['p_majors','p_degree','p_campus','p_birth','p_work','p_politics','p_certs'].forEach(function(id){
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.onchange = updateProfileSummary;
+  el.oninput = updateProfileSummary;
+});
+document.getElementById('maskProfile').onclick = function(e){ if (e.target.id === 'maskProfile') closeProfile(); };
+document.getElementById('f_img').onchange = function(){
+  var f = this.files && this.files[0];
+  if (!f) return;
+  compressImg(f, function(d){ pendingImg = d; renderImgThumb(); });
+  this.value = '';
+};
+document.getElementById('btnRmImg').onclick = function(){ pendingImg = ''; renderImgThumb(); };
+document.getElementById('imgLightbox').onclick = function(e){ if (e.target === this || e.target.id === 'imgLightboxX'){ this.classList.remove('on'); } };
 document.getElementById('mask').onclick = function(e){ if (e.target.id === 'mask') closeModal(); };
 
 document.getElementById('mExpClose').onclick = closeExpModal;
@@ -2834,6 +3582,17 @@ document.getElementById('btnJdDel').onclick = function(){
   save(LS_JD, JDS); curJd = null; renderJd(); toast('已删除');
 };
 
+document.getElementById('btnCmpParse').onclick = cmpParse;
+document.getElementById('btnCmpClear').onclick = clearCmp;
+document.getElementById('btnCmpExport').onclick = exportCmpMd;
+Array.prototype.forEach.call(document.querySelectorAll('#cmpViewSeg .seg-btn'), function(b){
+  b.onclick = function(){
+    cmpView = b.dataset.view;
+    syncSeg();
+    renderJdCmp();
+  };
+});
+
 document.getElementById('btnIvAdd').onclick = addIv;
 document.getElementById('fIvJob').onchange = renderIv;
 
@@ -2841,6 +3600,13 @@ document.getElementById('qPool').oninput = renderPool;
 document.getElementById('fCat').onchange = renderPool;
 document.getElementById('fBatch').onchange = renderPool;
 document.getElementById('fTime').onchange = renderPool;
+document.getElementById('fMajor').onchange = renderPool;
+document.getElementById('fScore').onchange = function(){ poolScoreFilter = this.checked; renderPool(); };
+document.getElementById('fHideExpired').onchange = function(){ poolHideExpired = this.checked; renderPool(); };
+document.getElementById('fHideFail').onchange = function(){
+  poolHideFail = this.checked; renderPool();
+  if (this.checked) toast('已隐藏硬性要求不满足的岗位（按「我的资质」逐条核对）');
+};
 document.getElementById('qTrack').oninput = renderTrack;
 document.getElementById('fStatus').onchange = function(e){ trackFilter = e.target.value; renderTrack(); };
 document.getElementById('btnClearFilter').onclick = function(){
@@ -2865,6 +3631,209 @@ document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ close
   renderAll();
   autoLoad();
 })();
+
+/* =========================================================
+   JD 多岗位对比
+   ========================================================= */
+function seedJdCmp(){
+  var a = '【示例公司A】品牌传播专员-深圳\n工作地点：深圳\n薪资：15-25K·15薪\n截止：2026-09-30\n岗位职责：负责品牌内容策划与社媒运营，用内容建立品牌与用户的情感连接。\n任职要求：熟悉小红书/抖音内容生态；会用 ChatGPT、Midjourney 等 AI 工具；英语可作为工作语言。';
+  var b = '【示例公司B】AI 内容运营-北京\n城市：北京\n月薪：20-35K\n岗位职责：AI 产品的内容运营与用户增长，策划多语言本地化内容。\n任职要求：有跨领域内容交付经验；熟悉 AIGC 工作流；雅思 6.5 以上。';
+  return { items: [ { raw:a, f:parseJd(a) }, { raw:b, f:parseJd(b) } ] };
+}
+function pick(raw, re){ var m = raw.match(re); return m ? m[1].trim() : ''; }
+function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+/* JD 板块标题表已上移至脚本顶部（见 SECTION_HEADS 定义），此处不再重复声明 */
+function otherHeads(excludeKey){
+  var out = [];
+  Object.keys(SECTION_HEADS).forEach(function(k){
+    if (k !== excludeKey) out = out.concat(SECTION_HEADS[k]);
+  });
+  return out;
+}
+function sectionOf(raw, key){
+  var starts = SECTION_HEADS[key], stops = otherHeads(key);
+  var idx = -1, head = '';
+  for (var i=0;i<starts.length;i++){
+    var p = raw.indexOf(starts[i]);
+    if (p !== -1 && (idx === -1 || p < idx)){ idx = p; head = starts[i]; }
+  }
+  if (idx === -1) return '';
+  var end = raw.length;
+  for (var j=0;j<stops.length;j++){
+    var s = raw.indexOf(stops[j], idx + head.length);
+    if (s !== -1 && s < end) end = s;
+  }
+  var seg = raw.slice(idx, end).replace(new RegExp('^[\\s\\S]*?' + escRe(head) + '[：: ]*'), '');
+  seg = seg.replace(/\r/g,'').trim();
+  return seg.length > 320 ? seg.slice(0,320) + '…' : seg;
+}
+function parseJd(raw){
+  var f = { org:'', pos:'', city:'', salary:'', deadline:'', req:'', duty:'' };
+  f.org = pick(raw, /(?:公司名称?|用人单位|雇主|关于我们)[：:]\s*([^\n;；。]{2,28})/) || pick(raw, /【([^】\n]{2,18})】/);
+  f.pos = pick(raw, /(?:职位名称|招聘岗位|招聘职位|岗位名称|职位)[：:]\s*([^\n;；]{2,28})/) || pick(raw, /([\u4e00-\u9fa5A-Za-z·]{2,22}(?:专员|工程师|经理|主管|运营|策划|助理|专家|分析师|负责人|岗|生))/);
+  f.city = pick(raw, /(?:工作地点|工作地|办公地点|地点|城市|base)[：:]\s*([^\n;；]{2,20})/) || pick(raw, /([\u4e00-\u9fa5]{2,6}(?:市|区|省))/);
+  f.salary = pick(raw, /(?:薪资|薪酬|月薪|工资|待遇|薪资范围|薪水)[：: ]*\s*([^\n;；]{2,22})/) || pick(raw, /(\d{1,3}\s*[-~—]\s*\d{1,3}\s*[kK万])/) || pick(raw, /(\d{1,3}\s*[kK])/);
+  f.deadline = pick(raw, /(?:截止|投递截止|报名截止|到岗时间|ddl|deadline)[：: ]*\s*([^\n;；]{2,22})/) || pick(raw, /(\d{4}[-/年.]\d{1,2}[-/月.]\d{1,2})/);
+  f.req  = sectionOf(raw, 'req');
+  f.duty = sectionOf(raw, 'duty');
+  return f;
+}
+function splitJds(raw){
+  var norm = String(raw||'').replace(/\r\n/g,'\n');
+  var parts = norm.split(/\n[ \t]*(?:={3,}|\-{3,}|\*{3,})[ \t]*\n/).map(function(p){ return p.trim(); }).filter(function(p){ return p.length; });
+  if (!parts.length) parts = [norm.trim()].filter(Boolean);
+  if (parts.length === 1){
+    var m = parts[0].split(/\n[ \t]*【/);
+    if (m.length > 1) parts = m.map(function(p, i){ return (i ? '【' : '') + p.trim(); }).filter(Boolean);
+  }
+  return parts;
+}
+function cmpParse(){
+  var raw = document.getElementById('cmpRaw').value;
+  if (!raw.trim()){ toast('请先粘贴 JD 文本'); return; }
+  var blocks = splitJds(raw);
+  if (!blocks.length){ toast('没有可解析的内容'); return; }
+  JDCMPS.items = blocks.map(function(b){ return { raw:b, f:parseJd(b) }; });
+  save(LS_JDCMP, JDCMPS);
+  cmpView = 'compare';
+  syncSeg();
+  renderJdCmp();
+  toast('已解析 ' + blocks.length + ' 条 JD');
+}
+function syncSeg(){
+  Array.prototype.forEach.call(document.querySelectorAll('#cmpViewSeg .seg-btn'), function(x){ x.classList.toggle('on', x.dataset.view === cmpView); });
+}
+function renderJdCmp(){
+  var items = (JDCMPS && JDCMPS.items) || [];
+  document.getElementById('cmpCount').textContent = items.length ? ('共 ' + items.length + ' 条 JD') : '';
+  var res = document.getElementById('cmpResult'), empty = document.getElementById('cmpEmpty');
+  if (!items.length){ res.style.display='none'; empty.style.display=''; return; }
+  empty.style.display='none'; res.style.display='';
+  if (cmpView === 'raw') renderCmpRaw(items); else renderCmpTable(items);
+  setupTopScrollbars(); /* JD 对照表格为动态创建（innerHTML），需在渲染后幂等注入顶部滚动条 */
+}
+function bindCmpEdits(items){
+  Array.prototype.forEach.call(document.querySelectorAll('#cmpResult .cmp-edit'), function(inp){
+    inp.oninput = function(){
+      var i = +inp.dataset.i, k = inp.dataset.k;
+      items[i].f[k] = inp.value;
+      save(LS_JDCMP, JDCMPS);
+    };
+  });
+}
+function renderCmpTable(items){
+  var head = '<tr><th style="min-width:78px;background:var(--surface-2);position:sticky;left:0;z-index:2">字段</th>' + items.map(function(it,i){
+    return '<th style="min-width:210px;vertical-align:top"><div class="cmp-hd">岗位 ' + (i+1) + '</div>' +
+      '<input class="cmp-edit" data-i="'+i+'" data-k="org" value="'+esc(it.f.org||'')+'" placeholder="单位名（JD 常缺，手动填）" style="margin-top:7px">' +
+      '<button class="btn btn-sm" style="margin-top:6px;width:100%" onclick="openResumeDraft('+i+')">生成简历初稿</button></th>';
+  }).join('') + '</tr>';
+  var body = CMP_FIELDS.map(function(fld){
+    var cells = items.map(function(it,i){
+      var v = it.f[fld.k] || '';
+      var el = fld.long
+        ? '<textarea class="cmp-edit" data-i="'+i+'" data-k="'+fld.k+'" rows="5" placeholder="'+fld.label+'（可改）">'+esc(v)+'</textarea>'
+        : '<input class="cmp-edit" data-i="'+i+'" data-k="'+fld.k+'" value="'+esc(v)+'" placeholder="'+fld.label+'（可改）">';
+      return '<td data-l="'+fld.label+'">'+el+'</td>';
+    }).join('');
+    return '<tr><td class="cmp-fld" data-l="字段"><b>'+fld.label+'</b></td>'+cells+'</tr>';
+  }).join('');
+  document.getElementById('cmpResult').innerHTML = '<div class="table-wrap"><table class="cmp-table"><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div>';
+  bindCmpEdits(items);
+}
+/* ---- 简历初稿：按 JD 关键词命中，从经历库挑相关条目组装 ---- */
+function jdKeywordsOf(text){
+  var s = String(text || ''), hit = [];
+  KEYWORDS.forEach(function(k){ if (s.indexOf(k) !== -1) hit.push(k); });
+  return hit;
+}
+function expScore(item, jdKw){
+  var bag = [].concat(item.关键词 || [], item.方向标签 || []).join(' ').toLowerCase();
+  var text = [item.标题, item.背景, item.动作, item.结果].join(' ').toLowerCase();
+  var score = 0, hit = [];
+  jdKw.forEach(function(k){
+    var kk = k.toLowerCase();
+    if (bag.indexOf(kk) !== -1){ score += 2; hit.push(k); }
+    else if (text.indexOf(kk) !== -1){ score += 1; hit.push(k); }
+  });
+  return { score: score, hit: hit };
+}
+function buildResumeDraft(it){
+  var jdKw = jdKeywordsOf((it.f.req || '') + ' ' + (it.f.duty || ''));
+  var pool = (EXPDATA.items || []).map(function(e){
+    var r = expScore(e, jdKw);
+    return { e: e, score: r.score, hit: r.hit };
+  }).sort(function(a,b){ return b.score - a.score; });
+  var picked = pool.filter(function(p){ return p.score > 0; }).slice(0, 6);
+  if (picked.length < 3) picked = pool.slice(0, Math.min(3, pool.length));
+  var lines = [];
+  lines.push('【投递岗位】' + (it.f.org || '（单位未识别，请手动填）') + ' · ' + (it.f.pos || '（岗位名未识别）'));
+  lines.push('（本稿由系统按 JD 关键词自动从经历库挑选相关条目生成，是初稿，不是终稿——请核实每条数据、按真实情况精简语言、自行决定取舍与顺序）');
+  lines.push('');
+  lines.push('JD 关键词命中：' + (jdKw.length ? jdKw.join('、') : '（未识别到关键词，以下按经历库现有条目顺序列出，相关性未知）'));
+  lines.push('');
+  lines.push('相关经历（按匹配度从高到低）：');
+  if (!picked.length){
+    lines.push('（经历库为空，先去「经历库」页导入或新增条目）');
+  } else {
+    picked.forEach(function(p, idx){
+      var e = p.e;
+      lines.push((idx+1) + '. ' + (e.标题 || '（未命名经历）') + (e.组织 ? '｜' + e.组织 : '') + (e.时期 ? '｜' + e.时期 : ''));
+      if (e.动作) lines.push('   - ' + e.动作);
+      if (e.结果 || e.量化) lines.push('   - 结果：' + [e.结果, e.量化].filter(Boolean).join('；'));
+      if (p.hit.length) lines.push('   - 命中关键词：' + p.hit.join('、'));
+      if (e.待补) lines.push('   - ⚠ 待补：' + e.待补 + '（面试大概率会被追问，先想好怎么答）');
+    });
+  }
+  return lines.join('\n');
+}
+function openResumeDraft(i){
+  var it = (JDCMPS.items || [])[i];
+  if (!it) return;
+  if (!expLoaded || !(EXPDATA.items||[]).length){ toast('经历库还没导入，先去「经历库」页导入 experience.json 或手动新增条目'); }
+  var text = buildResumeDraft(it);
+  document.getElementById('resumeDraftTitle').textContent = '简历初稿 · ' + (it.f.org || '岗位 ' + (i+1)) + ' · ' + (it.f.pos || '');
+  document.getElementById('resumeDraftBody').value = text;
+  document.getElementById('maskResume').classList.add('on');
+}
+function closeResumeDraft(){ document.getElementById('maskResume').classList.remove('on'); }
+function copyResumeDraft(){
+  var ta = document.getElementById('resumeDraftBody');
+  ta.select();
+  try{ document.execCommand('copy'); toast('已复制到剪贴板'); }
+  catch(e){ navigator.clipboard && navigator.clipboard.writeText(ta.value).then(function(){ toast('已复制到剪贴板'); }); }
+}
+function renderCmpRaw(items){
+  var html = items.map(function(it,i){
+    return '<div class="card card-pad" style="margin-bottom:12px">' +
+      '<div class="card-title">岗位 '+(i+1)+'　<input class="cmp-edit" data-i="'+i+'" data-k="org" value="'+esc(it.f.org||'')+'" placeholder="单位名（可填）" style="width:auto;min-width:150px;display:inline-block;vertical-align:middle"></div>' +
+      '<div class="cmp-pre">'+esc(it.raw)+'</div>' +
+    '</div>';
+  }).join('');
+  document.getElementById('cmpResult').innerHTML = html;
+  bindCmpEdits(items);
+}
+function clearCmp(){
+  if (!confirm('确认清空当前对比的所有 JD？此操作不可恢复。')) return;
+  JDCMPS.items = []; save(LS_JDCMP, JDCMPS);
+  var ta = document.getElementById('cmpRaw'); if (ta) ta.value='';
+  renderJdCmp(); toast('已清空');
+}
+function exportCmpMd(){
+  var items = (JDCMPS && JDCMPS.items) || [];
+  if (!items.length){ toast('还没有对比内容'); return; }
+  var L = ['# JD 多岗位对比', '', '> 字段为启发式抽取，判断以本人为准。'];
+  L.push('', '| 字段 | ' + items.map(function(it,i){ return '岗位'+(i+1)+(it.f.org?('（'+it.f.org+'）'):''); }).join(' | ') + ' |');
+  L.push('| --- | ' + items.map(function(){ return '---'; }).join(' | ') + ' |');
+  CMP_FIELDS.forEach(function(fld){
+    L.push('| ' + fld.label + ' | ' + items.map(function(it){ return (it.f[fld.k]||'—').replace(/\n/g,' ').replace(/\|/g,'/'); }).join(' | ') + ' |');
+  });
+  L.push('', '## 原文', '');
+  items.forEach(function(it,i){
+    L.push('### 岗位'+(i+1)+(it.f.org?(' · '+it.f.org):'')+(it.f.pos?(' · '+it.f.pos):''));
+    L.push('', '```', it.raw, '```', '');
+  });
+  downloadText('JD对比_'+items.length+'条.md', L.join('\n'), 'text/markdown');
+}
 
 })();
 </script>
